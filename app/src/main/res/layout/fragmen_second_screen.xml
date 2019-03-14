@@ -15,6 +15,7 @@
         android:textSize="18sp"
         android:lineHeight="22sp"
         android:textStyle="bold"
+        android:textColor="@color/colorBlackText"
         tools:ignore="UnusedAttribute" />
 
     <LinearLayout
@@ -23,8 +24,7 @@
         android:layout_marginTop="60dp"
         android:layout_width="309dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        android:orientation="vertical">
 
 
         <android.support.v7.widget.RecyclerView
