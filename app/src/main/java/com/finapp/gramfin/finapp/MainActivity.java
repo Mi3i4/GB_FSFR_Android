@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         // выводим наш фрагмент
-        placeFragment();
+        placeFragment(FragmentSecondScreen.class.getName());
     }
 
     @Override
@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void placeFragment() {
+    public void placeFragment(String fragmentTag) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Fragment fragment = Fragment.instantiate(this, FragmentSecondScreen.class.getName(),null);
-        transaction.replace(R.id.container_fragments, fragment, FragmentSecondScreen.class.getName());
+        Fragment fragment = Fragment.instantiate(this, fragmentTag,null);
+        transaction.replace(R.id.container_fragments, fragment, fragmentTag);
         transaction.commit();
 
     }
