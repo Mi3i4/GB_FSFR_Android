@@ -81,7 +81,7 @@ public class FragmentTestQuestion extends Fragment {
         return inflatedView;
     }
 
-    // условная реализация проверки правильности ответа на вопрос, для проверки работы экрана 3 (очень условная)
+    // условная реализация проверки правильности ответа на вопрос, для проверки работы экрана 3(очень условная)
     private void checkResponse(int e, View view) {
         int correctAnswer = 4;
         if (e == correctAnswer) {
