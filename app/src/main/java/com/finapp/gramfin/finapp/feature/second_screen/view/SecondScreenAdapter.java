@@ -1,6 +1,45 @@
 package com.finapp.gramfin.finapp.feature.second_screen.view;
 
-public class SecondScreenAdapter {
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-    public interface Listener{}
+import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SecondScreenAdapter extends RecyclerView.Adapter<SecondScreenHolder> {
+
+    private List<ModelChapter> modelChapterList = new ArrayList<>();
+    Listener listener;
+
+
+    public SecondScreenAdapter(Listener listener, List<ModelChapter> modelChapterList) {
+        super();
+        this.listener = listener;
+        this.modelChapterList = modelChapterList;
+    }
+
+    @NonNull
+    @Override
+    public SecondScreenHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        return SecondScreenHolder.create(LayoutInflater.from(viewGroup.getContext()), viewGroup);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SecondScreenHolder secondScreenHolder, int id) {
+        secondScreenHolder.bind(modelChapterList.get(id), listener, id);
+    }
+
+    @Override
+    public int getItemCount() {
+        return modelChapterList.size();
+    }
+
+    public interface Listener {
+        void onFeedClick(int id);
+    }
+
 }
