@@ -107,7 +107,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/comments"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <ImageButton
         android:id="@+id/button_expand_more"
