@@ -53,6 +53,7 @@ public class PresenterSecondScreen {
 
     public void callBackIdModelChapters(int id) {
         System.out.println("Номер в листе = " + id);
+        iFragmentSetChapters.setToast("Этот функционал еще не работает");
 
     }
 

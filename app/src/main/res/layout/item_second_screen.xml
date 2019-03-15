@@ -28,7 +28,7 @@
 
     <TextView
         android:id="@+id/i_know"
-        android:layout_width="126dp"
+        android:layout_width="63dp"
         android:layout_height="15dp"
         android:layout_below="@+id/chapter_name"
         android:layout_marginTop="5dp"
@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/i_dont_know"
-        android:layout_width="126dp"
+        android:layout_width="81dp"
         android:layout_height="15dp"
         android:layout_below="@+id/chapter_name"
         android:layout_marginTop="5dp"

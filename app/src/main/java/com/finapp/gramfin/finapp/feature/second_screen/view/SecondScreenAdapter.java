@@ -7,16 +7,15 @@ import android.view.ViewGroup;
 
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SecondScreenAdapter extends RecyclerView.Adapter<SecondScreenHolder> {
 
-    private List<ModelChapter> modelChapterList = new ArrayList<>();
-    Listener listener;
+    private List<ModelChapter> modelChapterList;
+    private Listener listener;
 
 
-    public SecondScreenAdapter(Listener listener, List<ModelChapter> modelChapterList) {
+    SecondScreenAdapter(Listener listener, List<ModelChapter> modelChapterList) {
         super();
         this.listener = listener;
         this.modelChapterList = modelChapterList;

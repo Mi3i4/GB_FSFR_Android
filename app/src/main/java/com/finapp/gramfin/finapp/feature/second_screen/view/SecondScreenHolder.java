@@ -1,5 +1,6 @@
 package com.finapp.gramfin.finapp.feature.second_screen.view;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 
-public class SecondScreenHolder extends RecyclerView.ViewHolder {
+class SecondScreenHolder extends RecyclerView.ViewHolder {
     private View root;
     private TextView nameChapter;
     private TextView numberOfQuetions;
@@ -18,7 +19,7 @@ public class SecondScreenHolder extends RecyclerView.ViewHolder {
     private TextView textIdontKnow;
     private ModelChapter modelChapter;
     private int id;
-    SecondScreenAdapter.Listener listener;
+    private SecondScreenAdapter.Listener listener;
 
     private SecondScreenHolder(@NonNull View itemView) {
         super(itemView);
@@ -39,11 +40,12 @@ public class SecondScreenHolder extends RecyclerView.ViewHolder {
 
     }
 
+    @SuppressLint("SetTextI18n")
     void bind(ModelChapter modelChapter, SecondScreenAdapter.Listener listener, int id) {
         this.listener = listener;
         this.modelChapter = modelChapter;
         this.id = id;
-        nameChapter.setText(modelChapter.getChapter());
+        nameChapter.setText(Integer.toString(1 + id) + ". " + modelChapter.getChapter());
         numberOfQuetions.setText("Всего вопросов - " + modelChapter.getNumberOfQuetions());
         textIknow.setText("Я знаю - " + modelChapter.getItemIKnow());
         textIdontKnow.setText("Я не знаю - " + modelChapter.getItemIdontKnow());
