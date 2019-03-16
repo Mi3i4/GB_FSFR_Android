@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.SearchView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -15,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
 
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
 
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -47,6 +51,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         // выводим наш фрагмент
         placeFragment(FragmentChapterSeliction.class.getName());
+
+        onNavigationItemSelected(navigationView.getMenu().findItem(R.id.nav_home));
     }
 
     @Override
@@ -63,6 +69,24 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem search = menu.findItem(R.id.action_search);
+        SearchView searchText = (SearchView) search.getActionView();
+        searchText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO: Implement the search submit
+                Toast.makeText(getApplication(),"Функционал еще не готов...", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO: Implement the search query change
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -87,8 +111,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_home) {
+            MainMenuFragment mainMenuFragment = new MainMenuFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.drawer_layout, mainMenuFragment, "mainMenuFragment")
+                    .addToBackStack(null)
+                    .commit();
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
