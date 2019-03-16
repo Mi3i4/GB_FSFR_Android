@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.first_screen.FirstScreen">
+    tools:context=".feature.main_menu_fragment.MainMenuFragment">
 
     <android.support.constraint.ConstraintLayout
         android:padding="28dp"
@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/firstScreen_btn_back"
+            android:background="@color/mainMenu_btn_back"
             android:text="@string/btn_start_learning_text"
-            android:textColor="@color/firstScreen_btn_text"
+            android:textColor="@color/mainMenu_btn_text"
             app:layout_constraintBottom_toTopOf="@+id/btn_start_training"
             tools:layout_editor_absoluteX="28dp" />
 
@@ -30,9 +30,9 @@
             android:layout_height="72dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/firstScreen_btn_back"
+            android:background="@color/mainMenu_btn_back"
             android:text="@string/btn_start_training_text"
-            android:textColor="@color/firstScreen_btn_text"
+            android:textColor="@color/mainMenu_btn_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="28dp" />
@@ -43,9 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_marginTop="20dp"
-            android:background="@color/firstScreen_btn_back"
+            android:background="@color/mainMenu_btn_back"
             android:text="@string/btn_start_exam_text"
-            android:textColor="@color/firstScreen_btn_text"
+            android:textColor="@color/mainMenu_btn_text"
             app:layout_constraintTop_toBottomOf="@+id/btn_start_training"
             tools:layout_editor_absoluteX="28dp" />
 

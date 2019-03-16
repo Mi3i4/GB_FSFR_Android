@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.finapp.gramfin.finapp.feature.first_screen.FirstScreen;
+import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -105,9 +105,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            FirstScreen firstScreen= new FirstScreen();
+            MainMenuFragment mainMenuFragment = new MainMenuFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.drawer_layout, firstScreen, "firstScreen")
+                    .replace(R.id.drawer_layout, mainMenuFragment, "mainMenuFragment")
                     .addToBackStack(null)
                     .commit();
 

@@ -1,4 +1,4 @@
-package com.finapp.gramfin.finapp.feature.first_screen;
+package com.finapp.gramfin.finapp.feature.main_menu_fragment;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
 
-public class FirstScreen extends Fragment implements View.OnClickListener {
+public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
-    private FirstScreenViewModel mViewModel;
+    private MainMenuViewModel mViewModel;
 
-    public static FirstScreen newInstance() {
-        return new FirstScreen();
+    public static MainMenuFragment newInstance() {
+        return new MainMenuFragment();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class FirstScreen extends Fragment implements View.OnClickListener {
         btn_start_training.setOnClickListener(this);
         btn_start_exam.setOnClickListener(this);
 
-        mViewModel = ViewModelProviders.of(this).get(FirstScreenViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(MainMenuViewModel.class);
         // TODO: Use the ViewModel
     }
 
