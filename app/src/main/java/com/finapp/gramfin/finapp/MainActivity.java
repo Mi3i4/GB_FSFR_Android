@@ -1,9 +1,12 @@
 package com.finapp.gramfin.finapp;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.SearchView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +19,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
+
+import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        // выводим наш фрагмент
+        placeFragment(FragmentChapterSeliction.class.getName());
 
         onNavigationItemSelected(navigationView.getMenu().findItem(R.id.nav_home));
     }
@@ -100,7 +107,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -126,5 +133,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void placeFragment(String fragmentTag) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment = Fragment.instantiate(this, fragmentTag,null);
+        transaction.replace(R.id.container_fragments, fragment, fragmentTag);
+        transaction.commit();
+
     }
 }
