@@ -28,7 +28,7 @@ public class FragmentChapterSeliction extends Fragment implements IFragmentChoos
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragmen_second_screen, container, false);
+        View view = inflater.inflate(R.layout.fragmen_chapter_selection, container, false);
         return view;
     }
 

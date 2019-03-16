@@ -53,6 +53,6 @@ class ChapterSelectionHolder extends RecyclerView.ViewHolder {
     }
 
     static ChapterSelectionHolder create(LayoutInflater inflater, ViewGroup parent) {
-        return new ChapterSelectionHolder(inflater.inflate(R.layout.item_second_screen, parent, false));
+        return new ChapterSelectionHolder(inflater.inflate(R.layout.item_chapter_selection, parent, false));
     }
 }
