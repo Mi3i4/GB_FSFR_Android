@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.finapp.gramfin.finapp.feature.FirstScreen.FirstScreen;
+import com.finapp.gramfin.finapp.feature.first_screen.FirstScreen;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

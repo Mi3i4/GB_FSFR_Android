@@ -1,4 +1,4 @@
-package com.finapp.gramfin.finapp.feature.FirstScreen;
+package com.finapp.gramfin.finapp.feature.first_screen;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
