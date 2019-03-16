@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 
-class SecondScreenHolder extends RecyclerView.ViewHolder {
+class ChapterSelectionHolder extends RecyclerView.ViewHolder {
     private View root;
     private TextView nameChapter;
     private TextView numberOfQuetions;
@@ -19,9 +19,9 @@ class SecondScreenHolder extends RecyclerView.ViewHolder {
     private TextView textIdontKnow;
     private ModelChapter modelChapter;
     private int id;
-    private SecondScreenAdapter.Listener listener;
+    private ChapterSelectionAdapter.Listener listener;
 
-    private SecondScreenHolder(@NonNull View itemView) {
+    private ChapterSelectionHolder(@NonNull View itemView) {
         super(itemView);
         nameChapter = itemView.findViewById(R.id.chapter_name);
         numberOfQuetions = itemView.findViewById(R.id.number_of_questions);
@@ -41,7 +41,7 @@ class SecondScreenHolder extends RecyclerView.ViewHolder {
     }
 
     @SuppressLint("SetTextI18n")
-    void bind(ModelChapter modelChapter, SecondScreenAdapter.Listener listener, int id) {
+    void bind(ModelChapter modelChapter, ChapterSelectionAdapter.Listener listener, int id) {
         this.listener = listener;
         this.modelChapter = modelChapter;
         this.id = id;
@@ -52,7 +52,7 @@ class SecondScreenHolder extends RecyclerView.ViewHolder {
 
     }
 
-    static SecondScreenHolder create(LayoutInflater inflater, ViewGroup parent) {
-        return new SecondScreenHolder(inflater.inflate(R.layout.item_second_screen, parent, false));
+    static ChapterSelectionHolder create(LayoutInflater inflater, ViewGroup parent) {
+        return new ChapterSelectionHolder(inflater.inflate(R.layout.item_second_screen, parent, false));
     }
 }

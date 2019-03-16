@@ -9,13 +9,13 @@ import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 
 import java.util.List;
 
-public class SecondScreenAdapter extends RecyclerView.Adapter<SecondScreenHolder> {
+public class ChapterSelectionAdapter extends RecyclerView.Adapter<ChapterSelectionHolder> {
 
     private List<ModelChapter> modelChapterList;
     private Listener listener;
 
 
-    SecondScreenAdapter(Listener listener, List<ModelChapter> modelChapterList) {
+    ChapterSelectionAdapter(Listener listener, List<ModelChapter> modelChapterList) {
         super();
         this.listener = listener;
         this.modelChapterList = modelChapterList;
@@ -23,12 +23,12 @@ public class SecondScreenAdapter extends RecyclerView.Adapter<SecondScreenHolder
 
     @NonNull
     @Override
-    public SecondScreenHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return SecondScreenHolder.create(LayoutInflater.from(viewGroup.getContext()), viewGroup);
+    public ChapterSelectionHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        return ChapterSelectionHolder.create(LayoutInflater.from(viewGroup.getContext()), viewGroup);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SecondScreenHolder secondScreenHolder, int id) {
+    public void onBindViewHolder(@NonNull ChapterSelectionHolder secondScreenHolder, int id) {
         secondScreenHolder.bind(modelChapterList.get(id), listener, id);
     }
 

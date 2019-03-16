@@ -5,14 +5,14 @@ import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PresenterSecondScreen {
+public class PresenterChapterSelection {
 
-    private IFragmentSetChapters iFragmentSetChapters;
+    private IFragmentChooseChapter ifragmentChooseChapter;
     private List<ModelChapter> listChapters = new ArrayList<>();
 
 
-    public PresenterSecondScreen(IFragmentSetChapters iFragmentSetChapters) {
-        this.iFragmentSetChapters = iFragmentSetChapters;
+    public PresenterChapterSelection(IFragmentChooseChapter ifragmentChooseChapter) {
+        this.ifragmentChooseChapter = ifragmentChooseChapter;
         setModelChapters();
     }
 
@@ -47,13 +47,13 @@ public class PresenterSecondScreen {
         listChapters.add(new ModelChapter("Мировой финансовый рынок",
                 3, 2, 1));
 
-        iFragmentSetChapters.setChapters(listChapters);
+        ifragmentChooseChapter.setChapters(listChapters);
 
     }
 
     public void callBackIdModelChapters(int id) {
         System.out.println("Номер в листе = " + id);
-        iFragmentSetChapters.setToast("Этот функционал еще не работает");
+        ifragmentChooseChapter.setToast("Этот функционал еще не работает");
 
     }
 

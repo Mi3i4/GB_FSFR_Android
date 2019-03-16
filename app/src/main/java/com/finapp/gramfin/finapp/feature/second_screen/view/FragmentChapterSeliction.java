@@ -1,6 +1,5 @@
 package com.finapp.gramfin.finapp.feature.second_screen.view;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,15 +13,15 @@ import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
-import com.finapp.gramfin.finapp.feature.second_screen.presenter.IFragmentSetChapters;
-import com.finapp.gramfin.finapp.feature.second_screen.presenter.PresenterSecondScreen;
+import com.finapp.gramfin.finapp.feature.second_screen.presenter.IFragmentChooseChapter;
+import com.finapp.gramfin.finapp.feature.second_screen.presenter.PresenterChapterSelection;
 
 import java.util.List;
 import java.util.Objects;
 
-public class FragmentSecondScreen extends Fragment implements IFragmentSetChapters, SecondScreenAdapter.Listener {
+public class FragmentChapterSeliction extends Fragment implements IFragmentChooseChapter, ChapterSelectionAdapter.Listener {
 
-    PresenterSecondScreen presenterSecondScreen;
+    PresenterChapterSelection presenterSecondScreen;
 
     private RecyclerView recViewChapters;
 
@@ -37,7 +36,7 @@ public class FragmentSecondScreen extends Fragment implements IFragmentSetChapte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
-        presenterSecondScreen = new PresenterSecondScreen(this);
+        presenterSecondScreen = new PresenterChapterSelection(this);
     }
 
     private void initViews(View view) {
@@ -50,7 +49,7 @@ public class FragmentSecondScreen extends Fragment implements IFragmentSetChapte
 
         recViewChapters.setLayoutManager(new LinearLayoutManager(getActivity()));
         recViewChapters.setHasFixedSize(false);
-        SecondScreenAdapter secondScreenAdapter = new SecondScreenAdapter(this, listChapters);
+        ChapterSelectionAdapter secondScreenAdapter = new ChapterSelectionAdapter(this, listChapters);
         recViewChapters.setAdapter(secondScreenAdapter);
 
     }
