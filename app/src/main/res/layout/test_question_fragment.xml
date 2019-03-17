@@ -19,6 +19,13 @@
         android:paddingLeft="21dp"
         android:text="@string/current_topic"
         android:textSize="10sp" />
+    <ImageButton
+        android:id="@+id/checkbox_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorWhite"
+        android:src="@drawable/ic_turned_in_gray_24dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

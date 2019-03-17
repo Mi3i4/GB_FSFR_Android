@@ -15,6 +15,7 @@ public class FragmentTestQuestion extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflatedView = inflater.inflate(R.layout.test_question_fragment, container, false);
+        getActivity().setTitle("Тренировка");
 
 
         final TextView textView_1 = inflatedView.findViewById(R.id.answer_choice_1);
