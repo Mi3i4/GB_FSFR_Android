@@ -13,4 +13,6 @@
     <string name="answer_choice_4">Всё перечисленное</string>
     <string name="findError">нашли ошибку?</string>
     <string name="comments">коментарии</string>
+    <string name="current_chapter">Глава 1 - Рынок ценных бумаг</string>
+    <string name="current_topic">Тема 1 - Функционирование финансового рынка</string>
 </resources>
