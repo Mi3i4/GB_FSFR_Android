@@ -3,6 +3,8 @@ package com.finapp.gramfin.finapp;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.finapp.gramfin.finapp.feature.FragmentTestQuestion;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,6 +26,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //код экрана 3
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTestQuestion testQuestion =new FragmentTestQuestion();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.container_fragment,testQuestion ).commit();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

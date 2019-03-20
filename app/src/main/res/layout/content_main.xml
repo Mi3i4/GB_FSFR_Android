@@ -8,12 +8,11 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <!--вставка фрагмента экрана 3, для удобства проверки-->
-    <fragment
+
+    <FrameLayout
+        android:id="@+id/container_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/test_question_fragment"
-        android:name="com.finapp.gramfin.finapp.FragmentTestQuestion">
-    </fragment>
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

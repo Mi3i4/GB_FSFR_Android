@@ -1,4 +1,4 @@
-package com.finapp.gramfin.finapp;
+package com.finapp.gramfin.finapp.feature;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,75 +11,78 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FragmentTestQuestion extends Fragment {
+import com.finapp.gramfin.finapp.R;
 
+public class FragmentTestQuestion extends Fragment implements View.OnClickListener {
+    TextView answer_choice_1;
+    TextView answer_choice_2;
+    TextView answer_choice_3;
+    TextView answer_choice_4;
+    TextView findError;
+    TextView viewComments;
+    ImageButton buttonExpandMore;
+
+    private void initViews() {
+
+        answer_choice_1 = getView().findViewById(R.id.answer_choice_1);
+        answer_choice_2 = getView().findViewById(R.id.answer_choice_2);
+        answer_choice_3 = getView().findViewById(R.id.answer_choice_3);
+        answer_choice_4 = getView().findViewById(R.id.answer_choice_4);
+        findError = getView().findViewById(R.id.findError);
+        viewComments = getView().findViewById(R.id.view_comments);
+        buttonExpandMore = getView().findViewById(R.id.button_expand_more);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View inflatedView = inflater.inflate(R.layout.test_question_fragment, container, false);
-        getActivity().setTitle("Тренировка");
-
-
-        final TextView textView_1 = inflatedView.findViewById(R.id.answer_choice_1);
-        textView_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkResponse(1, textView_1);
-                textView_1.setElevation(2);
-            }
-        });
-        final TextView textView_2 = inflatedView.findViewById(R.id.answer_choice_2);
-        textView_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkResponse(2, textView_2);
-                textView_2.setElevation(2);
-            }
-        });
-
-
-        final TextView textView_3 = inflatedView.findViewById(R.id.answer_choice_3);
-        textView_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkResponse(3, textView_3);
-                textView_3.setElevation(2);
-            }
-        });
-        final TextView textView_4 = inflatedView.findViewById(R.id.answer_choice_4);
-        textView_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                checkResponse(4, textView_4);
-                textView_4.setElevation(2);
-            }
-        });
-
-
-        TextView findError = inflatedView.findViewById(R.id.findError);
-        findError.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "функционал еще не готов", Toast.LENGTH_SHORT).show();
-            }
-        });
-        TextView viewComments = inflatedView.findViewById(R.id.view_comments);
-        viewComments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "функционал еще не готов", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        ImageButton buttonExpandMore = inflatedView.findViewById(R.id.button_expand_more);
-        buttonExpandMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "функционал еще не готов", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
         return inflatedView;
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initViews();
+        setOnClick();
+        getActivity().setTitle("Тренировка");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.answer_choice_1:
+                checkResponse(1, answer_choice_1);
+                answer_choice_1.setElevation(2);
+                break;
+            case R.id.answer_choice_2:
+                checkResponse(2, answer_choice_2);
+                answer_choice_2.setElevation(2);
+                break;
+            case R.id.answer_choice_3:
+                checkResponse(3, answer_choice_3);
+                answer_choice_3.setElevation(2);
+                break;
+            case R.id.answer_choice_4:
+                checkResponse(4, answer_choice_4);
+                answer_choice_4.setElevation(2);
+                break;
+            default:
+                Toast.makeText(getActivity(), "Функционал еще не готов...", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    private void setOnClick() {
+        answer_choice_1.setOnClickListener(this);
+        answer_choice_2.setOnClickListener(this);
+        answer_choice_3.setOnClickListener(this);
+        answer_choice_4.setOnClickListener(this);
+        findError.setOnClickListener(this);
+        viewComments.setOnClickListener(this);
+        buttonExpandMore.setOnClickListener(this);
     }
 
     // условная реализация проверки правильности ответа на вопрос, для проверки работы экрана 3(очень условная)
