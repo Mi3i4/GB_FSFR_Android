@@ -1,7 +1,12 @@
 package com.finapp.gramfin.finapp.feature.main_menu_fragment;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
+
+import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class MainMenuViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+    public void startTraining() {
+        FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class);
+    }
 }

@@ -1,29 +1,24 @@
 package com.finapp.gramfin.finapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.SearchView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.widget.SearchView;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
 
-import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
-
-import com.finapp.gramfin.finapp.feature.FragmentTestQuestion;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,13 +29,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //код экрана 3
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTestQuestion testQuestion =new FragmentTestQuestion();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.container_fragment,testQuestion ).commit();
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +47,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        // выводим наш фрагмент
-        placeFragment(FragmentChapterSeliction.class.getName());
 
-        onNavigationItemSelected(navigationView.getMenu().findItem(R.id.nav_home));
+        FragmentRouter.getInstance().setContext(this, getSupportFragmentManager());
+        FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
     }
 
     @Override
@@ -122,11 +109,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            MainMenuFragment mainMenuFragment = new MainMenuFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.drawer_layout, mainMenuFragment, "mainMenuFragment")
-                    .addToBackStack(null)
-                    .commit();
+            FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
 
         } else if (id == R.id.nav_gallery) {
 
@@ -143,13 +126,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void placeFragment(String fragmentTag) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Fragment fragment = Fragment.instantiate(this, fragmentTag,null);
-        transaction.replace(R.id.container_fragments, fragment, fragmentTag);
-        transaction.commit();
-
     }
 }

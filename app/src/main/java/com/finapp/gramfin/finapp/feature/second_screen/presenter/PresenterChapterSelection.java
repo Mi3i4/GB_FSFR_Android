@@ -1,6 +1,8 @@
 package com.finapp.gramfin.finapp.feature.second_screen.presenter;
 
+import com.finapp.gramfin.finapp.feature.question_viewpager.QuestionViewpagerFragment;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +55,14 @@ public class PresenterChapterSelection {
 
     public void callBackIdModelChapters(int id) {
         System.out.println("Номер в листе = " + id);
-        ifragmentChooseChapter.setToast("Этот функционал еще не работает");
 
+        switch (id) {
+            case 0:
+                FragmentRouter.getInstance().placeFragment(QuestionViewpagerFragment.class);
+                break;
+            default:
+                ifragmentChooseChapter.setToast("Этот функционал еще не работает");
+        }
     }
 
 
