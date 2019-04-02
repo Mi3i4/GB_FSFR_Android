@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
@@ -17,7 +16,6 @@ import com.finapp.gramfin.finapp.feature.second_screen.presenter.IFragmentChoose
 import com.finapp.gramfin.finapp.feature.second_screen.presenter.PresenterChapterSelection;
 
 import java.util.List;
-import java.util.Objects;
 
 public class FragmentChapterSeliction extends Fragment implements IFragmentChooseChapter, ChapterSelectionAdapter.Listener {
 
@@ -52,11 +50,6 @@ public class FragmentChapterSeliction extends Fragment implements IFragmentChoos
         ChapterSelectionAdapter secondScreenAdapter = new ChapterSelectionAdapter(this, listChapters);
         recViewChapters.setAdapter(secondScreenAdapter);
 
-    }
-
-    @Override
-    public void setToast(String error) {
-        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(), error, Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -2,8 +2,10 @@ package com.finapp.gramfin.finapp.feature.question_viewpager.presenter;
 
 import android.view.View;
 
+import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.DataRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 import com.finapp.gramfin.finapp.service.QuestionLoader;
 
 import java.util.ArrayList;
@@ -13,7 +15,6 @@ import java.util.Random;
 public class PresenterQuestionViewpager {
     private static final int QUESTIONS_AMOUNT = 221;
     private static final int QUESTIONS_NEEDED = 10;
-    private static final String TOAST_MESSAGE = "Функционал еще не готов...";
 
     private int chapter_id = 1; // TODO Сейчас доступна только первая тема, для получения списка вопросов будет другое API
     private IQuestionViewpager iQuestionViewpager;
@@ -45,7 +46,7 @@ public class PresenterQuestionViewpager {
     public void callBack(View v) {
 
         switch (v.getId()) {
-            default: iQuestionViewpager.setToast(TOAST_MESSAGE);
+            default: FragmentRouter.getInstance().notImplementedToast();
         }
     }
 }

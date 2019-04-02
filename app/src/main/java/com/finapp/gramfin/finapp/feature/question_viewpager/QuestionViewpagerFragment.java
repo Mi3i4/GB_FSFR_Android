@@ -4,21 +4,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.IQuestionViewpager;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.PresenterQuestionViewpager;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import androidx.viewpager2.widget.ViewPager2;
 
 public class QuestionViewpagerFragment extends Fragment implements IQuestionViewpager, QuestionViewpagerAdapter.Listener {
 
@@ -47,11 +44,6 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
-    public void setToast(String message) {
-        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

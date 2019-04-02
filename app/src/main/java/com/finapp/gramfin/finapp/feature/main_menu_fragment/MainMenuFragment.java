@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
@@ -49,14 +49,14 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.btn_start_learning:
                 // TODO: Implement кнопка "Изучение" нажата
-                Toast.makeText(getActivity(), "Функционал еще не готов...", Toast.LENGTH_SHORT).show();
+                FragmentRouter.getInstance().notImplementedToast();
                 break;
             case R.id.btn_start_training:
                 viewModel.startTraining();
                 break;
             case R.id.btn_start_exam:
                 // TODO: Implement кнопка "Экзамен" нажата
-                Toast.makeText(getActivity(), "Функционал еще не готов...", Toast.LENGTH_SHORT).show();
+                FragmentRouter.getInstance().notImplementedToast();
                 break;
         }
     }

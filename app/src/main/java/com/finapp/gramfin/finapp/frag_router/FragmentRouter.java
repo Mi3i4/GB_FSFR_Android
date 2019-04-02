@@ -1,6 +1,8 @@
 package com.finapp.gramfin.finapp.frag_router;
 
 import android.content.Context;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -29,6 +31,10 @@ public class FragmentRouter {
     public void setContext(Context context, FragmentManager fragmentManager) {
         this.context = context;
         this.fragmentManager = fragmentManager;
+    }
+
+    public void notImplementedToast() {
+        Toast.makeText(context, context.getString(R.string.under_construction), Toast.LENGTH_SHORT).show();
     }
 
     public void placeFragment(@NonNull Class<?> cls) {

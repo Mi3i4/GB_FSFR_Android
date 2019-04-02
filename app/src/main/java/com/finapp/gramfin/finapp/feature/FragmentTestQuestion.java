@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class FragmentTestQuestion extends Fragment implements View.OnClickListener {
     TextView answer_choice_1;
@@ -70,7 +70,7 @@ public class FragmentTestQuestion extends Fragment implements View.OnClickListen
                 answer_choice_4.setElevation(2);
                 break;
             default:
-                Toast.makeText(getActivity(), "Функционал еще не готов...", Toast.LENGTH_SHORT).show();
+                FragmentRouter.getInstance().notImplementedToast();
 
         }
     }

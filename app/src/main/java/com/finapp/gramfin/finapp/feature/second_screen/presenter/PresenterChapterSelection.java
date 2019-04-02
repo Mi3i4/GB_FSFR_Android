@@ -61,7 +61,7 @@ public class PresenterChapterSelection {
                 FragmentRouter.getInstance().placeFragment(QuestionViewpagerFragment.class);
                 break;
             default:
-                ifragmentChooseChapter.setToast("Этот функционал еще не работает");
+                FragmentRouter.getInstance().notImplementedToast();
         }
     }
 
