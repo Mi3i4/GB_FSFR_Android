@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class PresenterQuestionViewpager {
-    private static final int QUESTIONS_AMOUNT = 230;
+    private static final int QUESTIONS_AMOUNT = 221;
     private static final int QUESTIONS_NEEDED = 10;
     private static final String TOAST_MESSAGE = "Функционал еще не готов...";
 

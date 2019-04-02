@@ -9,7 +9,6 @@ import com.finapp.gramfin.finapp.api.question_model.DataRecordRestModel;
 import com.finapp.gramfin.finapp.api.question_model.PageRestModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuestionLoader {
 
@@ -40,7 +39,10 @@ public class QuestionLoader {
                 }
             }
 
-            page += 1;
+            if (retrofitCurPage.last_page > 0 && retrofitCurPage.per_page > 0) {
+                page = id / retrofitCurPage.per_page + ((id % retrofitCurPage.per_page > 0) ? 1 : 0);
+                if (page > retrofitCurPage.last_page) page = retrofitCurPage.last_page;
+            } else page += 1;
         }
 
         getPage(page, new OnPageListener() {
