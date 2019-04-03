@@ -1,5 +1,6 @@
 package com.finapp.gramfin.finapp.service;
 
+import androidx.annotation.Nullable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +42,11 @@ public class QuestionLoader {
 
             if (retrofitCurPage.last_page > 0 && retrofitCurPage.per_page > 0) {
                 page = id / retrofitCurPage.per_page + ((id % retrofitCurPage.per_page > 0) ? 1 : 0);
-                if (page > retrofitCurPage.last_page) page = retrofitCurPage.last_page;
+                if (page > retrofitCurPage.last_page) {
+                    requestDone = true;
+                    listener.onComplete(null);
+                    return;
+                }
             } else page += 1;
         }
 
@@ -92,7 +97,7 @@ public class QuestionLoader {
     }
 
     public interface OnRequestListener {
-        void onComplete(DataRecordRestModel result);
+        void onComplete(@Nullable DataRecordRestModel result);
     }
 
     public interface OnPageListener {

@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.annotation.Nullable;
+
 public class PresenterQuestionViewpager {
     private static final int QUESTIONS_AMOUNT = 221;
     private static final int QUESTIONS_NEEDED = 10;
@@ -30,9 +32,11 @@ public class PresenterQuestionViewpager {
         QuestionLoader.getInstance()
                 .getDataRecord(chapter_id, random.nextInt(QUESTIONS_AMOUNT), new QuestionLoader.OnRequestListener() {
                     @Override
-                    public void onComplete(DataRecordRestModel result) {
-                        ModelQuestion model = new ModelQuestion(chapter_id, result.id, result.content, result.answers);
-                        questionList.add(model);
+                    public void onComplete(@Nullable DataRecordRestModel result) {
+                        if (result != null) {
+                            ModelQuestion model = new ModelQuestion(chapter_id, result.id, result.content, result.answers);
+                            questionList.add(model);
+                        }
 
                         if (questionList.size() == QUESTIONS_NEEDED) {
                             QuestionLoader.getInstance().clearCash();
