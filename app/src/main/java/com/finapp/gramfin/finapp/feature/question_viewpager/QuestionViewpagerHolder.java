@@ -12,7 +12,6 @@ import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,11 +24,11 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     private TextView answer_choice_1;
     private TextView answer_choice_2;
     private TextView answer_choice_3;
-    private TextView answer_choice_4;
+     private TextView answer_choice_4;
     private TextView findError;
     private TextView viewComments;
     private ImageButton buttonExpandMore;
-    private ModelQuestion modelQuestion;
+
     private List<TextView> views;
     private int id;
     private QuestionViewpagerAdapter.Listener listener;
@@ -38,22 +37,24 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         root = itemView;
-        root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onFeedClick(v);
-                }
-            }
-        });
-
         textQuestion = root.findViewById(R.id.text_question);
 
         answer_choice_1 = root.findViewById(R.id.answer_choice_1);
         answer_choice_2 = root.findViewById(R.id.answer_choice_2);
         answer_choice_3 = root.findViewById(R.id.answer_choice_3);
         answer_choice_4 = root.findViewById(R.id.answer_choice_4);
+
         views = Arrays.asList(answer_choice_1, answer_choice_2, answer_choice_3, answer_choice_4);
+        for (TextView view:views) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onFeedClick(v, id);
+                    }
+                }
+            });
+        }
 
         findError = root.findViewById(R.id.findError);
         viewComments = root.findViewById(R.id.view_comments);
@@ -63,7 +64,6 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     @SuppressLint("SetTextI18n")
     void bind(ModelQuestion modelQuestion, QuestionViewpagerAdapter.Listener listener, int id) {
         this.listener = listener;
-        this.modelQuestion = modelQuestion;
         this.id = id;
 
         textQuestion.setText(modelQuestion.getCaption());

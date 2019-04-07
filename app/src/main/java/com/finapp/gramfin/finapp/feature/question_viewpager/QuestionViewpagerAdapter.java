@@ -40,6 +40,6 @@ public class QuestionViewpagerAdapter extends RecyclerView.Adapter<QuestionViewp
     }
 
     public interface Listener {
-        void onFeedClick(View v);
+        void onFeedClick(View v, int id);
     }
 }
