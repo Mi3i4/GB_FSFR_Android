@@ -24,7 +24,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     private TextView answer_choice_1;
     private TextView answer_choice_2;
     private TextView answer_choice_3;
-     private TextView answer_choice_4;
+    private TextView answer_choice_4;
     private TextView findError;
     private TextView viewComments;
     private ImageButton buttonExpandMore;
@@ -54,6 +54,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
                     }
                 }
             });
+            view.setVisibility(View.GONE);
         }
 
         findError = root.findViewById(R.id.findError);
@@ -70,7 +71,9 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
         int i = 0;
         for (AnswerRecordRestModel answer:modelQuestion.getAnswers()) {
-            views.get(i++).setText(answer.content);
+            TextView view = views.get(i++);
+            view.setText(answer.content);
+            view.setVisibility(View.VISIBLE);
         }
     }
     static QuestionViewpagerHolder create(LayoutInflater inflater, ViewGroup parent) {

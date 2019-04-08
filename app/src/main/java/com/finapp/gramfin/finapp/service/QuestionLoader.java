@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class QuestionLoader {
 
+    public final static String QUESTION_COMPLETE = "OK";
+    public final static String QUESTION_NOT_FOUND = "question not found";
     private static QuestionLoader instance = null;
     private static DataRecordRestModel retrofitDataRecord;
     private static boolean requestDone;
@@ -35,7 +37,7 @@ public class QuestionLoader {
             for (DataRecordRestModel item: retrofitCurPage.data) {
                 if (item.chapters_id == chapter_id && item.id == id) {
                     requestDone = true;
-                    listener.onComplete(item);
+                    listener.onComplete(item, QUESTION_COMPLETE);
                     return;
                 }
             }
@@ -44,7 +46,7 @@ public class QuestionLoader {
                 page = id / retrofitCurPage.per_page + ((id % retrofitCurPage.per_page > 0) ? 1 : 0);
                 if (page > retrofitCurPage.last_page) {
                     requestDone = true;
-                    listener.onComplete(null);
+                    listener.onComplete(null, QUESTION_NOT_FOUND);
                     return;
                 }
             } else page += 1;
@@ -52,8 +54,9 @@ public class QuestionLoader {
 
         getPage(page, new OnPageListener() {
             @Override
-            public void onComplete(PageRestModel result) {
-                searchPage(result.current_page, result);
+            public void onComplete(PageRestModel result, String error) {
+                if (result != null) searchPage(result.current_page, result);
+                else listener.onComplete(null, error);
             }
         });
     }
@@ -74,7 +77,7 @@ public class QuestionLoader {
     private void getPage(int page, final OnPageListener listener) {
         for (PageRestModel pageFromCash:pagesCash) {
             if (pageFromCash.current_page == page) {
-                listener.onComplete(pageFromCash);
+                listener.onComplete(pageFromCash, "from cash");
                 return;
             }
         }
@@ -85,22 +88,26 @@ public class QuestionLoader {
                     public void onResponse(Call<PageRestModel> call, Response<PageRestModel> response) {
                         if (response.isSuccessful()) {
                             pagesCash.add(response.body());
-                            listener.onComplete(response.body());
+                            listener.onComplete(response.body(), response.message());
+                        } else {
+                            requestDone = true;
+                            listener.onComplete(null,response.code() + " " + response.message());
                         }
                     }
 
                     @Override
                     public void onFailure(Call<PageRestModel> call, Throwable t) {
                         requestDone = true;
+                        listener.onComplete(null, t.toString());
                     }
                 });
     }
 
     public interface OnRequestListener {
-        void onComplete(@Nullable DataRecordRestModel result);
+        void onComplete(@Nullable DataRecordRestModel result, String error);
     }
 
     public interface OnPageListener {
-        void onComplete(PageRestModel result);
+        void onComplete(@Nullable PageRestModel result, String error);
     }
 }

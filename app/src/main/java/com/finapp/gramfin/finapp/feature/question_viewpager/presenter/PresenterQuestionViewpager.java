@@ -34,9 +34,12 @@ public class PresenterQuestionViewpager {
         QuestionLoader.getInstance()
                 .getDataRecord(chapter_id, random.nextInt(QUESTIONS_AMOUNT), new QuestionLoader.OnRequestListener() {
                     @Override
-                    public void onComplete(@Nullable DataRecordRestModel result) {
+                    public void onComplete(@Nullable DataRecordRestModel result, String error) {
                         if (result != null) {
                             ModelQuestion model = new ModelQuestion(chapter_id, result.id, result.content, result.answers);
+                            questionList.add(model);
+                        } else if (!error.equals(QuestionLoader.QUESTION_NOT_FOUND)) {
+                            ModelQuestion model = new ModelQuestion(chapter_id, -1, error, new ArrayList<AnswerRecordRestModel>());
                             questionList.add(model);
                         }
 
