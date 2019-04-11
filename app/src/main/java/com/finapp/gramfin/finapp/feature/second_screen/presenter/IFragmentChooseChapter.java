@@ -8,6 +8,4 @@ public interface IFragmentChooseChapter {
 
     void setChapters(List<ModelChapter> listChapters);
 
-    void setToast(String error);
-
 }

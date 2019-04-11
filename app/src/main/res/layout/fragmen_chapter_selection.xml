@@ -10,7 +10,7 @@
         android:layout_width="311dp"
         android:layout_height="22dp"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:text="@string/headline_second_screen"
         android:textSize="18sp"
         android:lineHeight="22sp"
@@ -27,12 +27,12 @@
         android:orientation="vertical">
 
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recViewChapter"
             android:layout_width="309dp"
             android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

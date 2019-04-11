@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".feature.main_menu_fragment.MainMenuFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="28dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -49,5 +50,5 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_start_training"
             tools:layout_editor_absoluteX="28dp" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

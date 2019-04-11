@@ -1,21 +1,21 @@
 package com.finapp.gramfin.finapp.feature.main_menu_fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
-    private MainMenuViewModel mViewModel;
+    private MainMenuViewModel viewModel;
 
     public static MainMenuFragment newInstance() {
         return new MainMenuFragment();
@@ -24,7 +24,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.first_screen_fragment, container, false);
+        return inflater.inflate(R.layout.main_menu_fragment, container, false);
     }
 
     @Override
@@ -41,8 +41,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         btn_start_training.setOnClickListener(this);
         btn_start_exam.setOnClickListener(this);
 
-        mViewModel = ViewModelProviders.of(this).get(MainMenuViewModel.class);
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProviders.of(this).get(MainMenuViewModel.class);
     }
 
     @Override
@@ -50,12 +49,15 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()) {
             case R.id.btn_start_learning:
                 // TODO: Implement кнопка "Изучение" нажата
+                FragmentRouter.getInstance().notImplementedToast();
+                break;
             case R.id.btn_start_training:
-                // TODO: Implement кнопка "Тренировка" нажата
+                viewModel.startTraining();
+                break;
             case R.id.btn_start_exam:
                 // TODO: Implement кнопка "Экзамен" нажата
-
-                Toast.makeText(getActivity(), "Функционал еще не готов...", Toast.LENGTH_SHORT).show();
+                FragmentRouter.getInstance().notImplementedToast();
+                break;
         }
     }
 }
