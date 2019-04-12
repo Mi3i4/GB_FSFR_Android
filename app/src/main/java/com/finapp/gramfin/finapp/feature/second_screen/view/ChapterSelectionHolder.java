@@ -13,6 +13,7 @@ import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 
 class ChapterSelectionHolder extends RecyclerView.ViewHolder {
     private View root;
+    private TextView numberOfChapter;
     private TextView nameChapter;
     private TextView numberOfQuetions;
     private TextView textIknow;
@@ -23,6 +24,7 @@ class ChapterSelectionHolder extends RecyclerView.ViewHolder {
 
     private ChapterSelectionHolder(@NonNull View itemView) {
         super(itemView);
+        numberOfChapter = itemView.findViewById(R.id.number_of_chapter);
         nameChapter = itemView.findViewById(R.id.chapter_name);
         numberOfQuetions = itemView.findViewById(R.id.number_of_questions);
         textIknow = itemView.findViewById(R.id.i_know);
@@ -45,10 +47,11 @@ class ChapterSelectionHolder extends RecyclerView.ViewHolder {
         this.listener = listener;
         this.modelChapter = modelChapter;
         this.id = id;
-        nameChapter.setText(Integer.toString(1 + id) + ". " + modelChapter.getChapter());
-        numberOfQuetions.setText("Всего вопросов - " + modelChapter.getNumberOfQuetions());
-        textIknow.setText("Я знаю - " + modelChapter.getItemIKnow());
-        textIdontKnow.setText("Я не знаю - " + modelChapter.getItemIdontKnow());
+        numberOfChapter.setText(Integer.toString(1 + id) );
+        nameChapter.setText(modelChapter.getChapter());
+        numberOfQuetions.setText("Всего вопросов: " + modelChapter.getNumberOfQuetions());
+        textIknow.setText("Я знаю: " + modelChapter.getItemIKnow());
+        textIdontKnow.setText("Я не знаю: " + modelChapter.getItemIdontKnow());
 
     }
 
