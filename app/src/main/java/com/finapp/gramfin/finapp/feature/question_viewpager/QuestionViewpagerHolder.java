@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,9 +27,8 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     private TextView answer_choice_2;
     private TextView answer_choice_3;
     private TextView answer_choice_4;
-    private TextView findError;
-    private TextView viewComments;
-    private ImageButton buttonExpandMore;
+
+    private Button buttonSkip;
     private ModelQuestion modelQuestion;
     private List<TextView> views;
     private int id;
@@ -55,9 +55,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         answer_choice_4 = root.findViewById(R.id.answer_choice_4);
         views = Arrays.asList(answer_choice_1, answer_choice_2, answer_choice_3, answer_choice_4);
 
-        findError = root.findViewById(R.id.findError);
-        viewComments = root.findViewById(R.id.view_comments);
-        buttonExpandMore = root.findViewById(R.id.button_expand_more);
+        buttonSkip = root.findViewById(R.id.button_skip);
     }
 
     @SuppressLint("SetTextI18n")
