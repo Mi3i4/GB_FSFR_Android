@@ -31,7 +31,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getActivity().setTitle(R.string.first_screen_name);
+        getActivity().setTitle(R.string.main_menu_title);
 
         Button btn_start_learning = getView().findViewById(R.id.btn_start_learning);
         Button btn_start_training = getView().findViewById(R.id.btn_start_training);
