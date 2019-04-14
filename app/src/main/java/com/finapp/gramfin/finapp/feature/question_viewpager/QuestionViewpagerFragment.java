@@ -23,10 +23,6 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
 
     private ViewPager2 viewPager;
 
-    public static QuestionViewpagerFragment newInstance() {
-        return new QuestionViewpagerFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -47,13 +43,19 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     }
 
     @Override
-    public void onFeedClick(View v) {
-        presenterQuestionViewpager.callBack(v);
+    public void onFeedClick(View v, int id) {
+        presenterQuestionViewpager.callBack(v, id);
     }
 
     @Override
     public void setQuestion(List<ModelQuestion> listQuestion) {
         QuestionViewpagerAdapter questionViewpagerAdapter = new QuestionViewpagerAdapter(this, listQuestion);
         viewPager.setAdapter(questionViewpagerAdapter);
+    }
+
+    @Override
+    public void gotoNextPage() {
+        int item = viewPager.getCurrentItem();
+        if (++item < viewPager.getAdapter().getItemCount()) viewPager.setCurrentItem(item);
     }
 }

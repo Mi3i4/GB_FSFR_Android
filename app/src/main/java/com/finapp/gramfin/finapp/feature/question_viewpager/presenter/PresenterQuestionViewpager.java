@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.DataRecordRestModel;
+import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 import com.finapp.gramfin.finapp.service.QuestionLoader;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.Nullable;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class PresenterQuestionViewpager {
     private static final int QUESTIONS_AMOUNT = 221;
@@ -47,9 +49,21 @@ public class PresenterQuestionViewpager {
                 });
     }
 
-    public void callBack(View v) {
+    private void setAnswer(View view, AnswerRecordRestModel answer) {
+        if (answer.is_correct == 1) view.setBackgroundResource(R.color.colorLightGreen);
+        else view.setBackgroundResource(R.color.colorLightRed);
 
-        switch (v.getId()) {
+        iQuestionViewpager.gotoNextPage();
+    }
+
+    public void callBack(View view, int id) {
+        ArrayList<AnswerRecordRestModel> answers = questionList.get(id).getAnswers();
+
+        switch (view.getId()) {
+            case R.id.answer_choice_1: setAnswer(view, answers.get(0)); break;
+            case R.id.answer_choice_2: setAnswer(view, answers.get(1)); break;
+            case R.id.answer_choice_3: setAnswer(view, answers.get(2)); break;
+            case R.id.answer_choice_4: setAnswer(view, answers.get(3)); break;
             default: FragmentRouter.getInstance().notImplementedToast();
         }
     }
