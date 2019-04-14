@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#5BB8C0</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorLightGray">#F2F2F2</color>
@@ -13,7 +13,6 @@
     <color name="colorTextIknow">#6FCF97</color>
     <color name="colorTextIdontKnow">#EB5757</color>
     <color name="colorBlackText">#000000</color>
-    <color name="colorCircleText">#5BB8C0</color>
     <color name="colorBackGroundTrainScreen">#E5E5E5</color>
 
 </resources>
