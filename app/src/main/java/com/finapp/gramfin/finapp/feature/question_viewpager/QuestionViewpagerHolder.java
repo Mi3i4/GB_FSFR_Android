@@ -56,16 +56,16 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
                         switch (v.getId()) {
                             case R.id.answer_choice_1:
-                                listener.onFeedClick(0, id, listChoices);
+                                listener.onFeedClick(0, id, answer_choice_1);
                                 break;
                             case R.id.answer_choice_2:
-                                listener.onFeedClick(1, id, listChoices);
+                                listener.onFeedClick(1, id, answer_choice_2);
                                 break;
                             case R.id.answer_choice_3:
-                                listener.onFeedClick(2, id, listChoices);
+                                listener.onFeedClick(2, id, answer_choice_3);
                                 break;
                             case R.id.answer_choice_4:
-                                listener.onFeedClick(3, id, listChoices);
+                                listener.onFeedClick(3, id, answer_choice_4);
                                 break;
                             default:
                                 FragmentRouter.getInstance().notImplementedToast();
@@ -90,15 +90,6 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
         int i = 0;
         for (AnswerRecordRestModel answer : modelQuestion.getAnswers()) {
-//
-//            int choice = modelQuestion.getUserChoice();
-//            if (choice == i) {
-//                if (answer.is_correct == 1) {
-//                    color = modelQuestion.getRightAnswerColor();
-//                } else {
-//                    color = modelQuestion.getWrongAnswerColor();
-//                }
-//            }
 
             TextView view = listChoices.get(i++);
             view.setText(answer.content);
