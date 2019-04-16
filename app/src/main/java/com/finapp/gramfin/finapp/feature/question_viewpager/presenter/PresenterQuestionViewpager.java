@@ -58,15 +58,14 @@ public class PresenterQuestionViewpager {
         ArrayList<AnswerRecordRestModel> answers = modelQuestion.getAnswers();
         AnswerRecordRestModel answer = answers.get(choice);
 
-        if (answer.is_correct == 1) view.setBackgroundResource(modelQuestion.getRightAnswerColor());
-        else view.setBackgroundResource(modelQuestion.getWrongAnswerColor());
+        if (answer.is_correct == 1) { view.setBackgroundResource(modelQuestion.getRightAnswerColor()); }
+        else { view.setBackgroundResource(modelQuestion.getWrongAnswerColor()); }
 
         iQuestionViewpager.gotoNextPage();
     }
 
     public void callBack(View view, int id) {
         ModelQuestion modelQuestion = questionList.get(id);
-        ArrayList<AnswerRecordRestModel> answers = modelQuestion.getAnswers();
 
         switch (view.getId()) {
             case R.id.answer_choice_1: setAnswer(view, modelQuestion, 0); break;

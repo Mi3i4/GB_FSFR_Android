@@ -74,9 +74,10 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
             int color = modelQuestion.getNeutralAnswerColor();
 
             int choice = modelQuestion.getUserChoice();
-            if (choice == i)
-                if (answer.is_correct == 1) color = modelQuestion.getRightAnswerColor();
-                else color = modelQuestion.getWrongAnswerColor();
+            if (choice == i) {
+                if (answer.is_correct == 1) { color = modelQuestion.getRightAnswerColor(); }
+                else { color = modelQuestion.getWrongAnswerColor(); }
+            }
 
             TextView view = views.get(i++);
             view.setText(answer.content);
