@@ -90,7 +90,6 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
         int i = 0;
         for (AnswerRecordRestModel answer : modelQuestion.getAnswers()) {
-            int color = modelQuestion.getNeutralAnswerColor();
 //
 //            int choice = modelQuestion.getUserChoice();
 //            if (choice == i) {
@@ -104,7 +103,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
             TextView view = listChoices.get(i++);
             view.setText(answer.content);
             view.setVisibility(View.VISIBLE);
-            view.setBackgroundResource(color);
+            view.setBackgroundResource(R.color.colorLightGray);
         }
     }
 
