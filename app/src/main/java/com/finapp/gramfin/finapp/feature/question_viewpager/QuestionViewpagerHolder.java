@@ -91,15 +91,15 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         int i = 0;
         for (AnswerRecordRestModel answer : modelQuestion.getAnswers()) {
             int color = modelQuestion.getNeutralAnswerColor();
-
-            int choice = modelQuestion.getUserChoice();
-            if (choice == i) {
-                if (answer.is_correct == 1) {
-                    color = modelQuestion.getRightAnswerColor();
-                } else {
-                    color = modelQuestion.getWrongAnswerColor();
-                }
-            }
+//
+//            int choice = modelQuestion.getUserChoice();
+//            if (choice == i) {
+//                if (answer.is_correct == 1) {
+//                    color = modelQuestion.getRightAnswerColor();
+//                } else {
+//                    color = modelQuestion.getWrongAnswerColor();
+//                }
+//            }
 
             TextView view = listChoices.get(i++);
             view.setText(answer.content);
