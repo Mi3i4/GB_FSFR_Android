@@ -1,13 +1,17 @@
 package com.finapp.gramfin.finapp.feature.question_viewpager.model;
 
+import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 
 import java.util.ArrayList;
+
+import androidx.annotation.Nullable;
 
 public class ModelQuestion {
 
     private int chapter_id;
     private int id;
+    private int userChoice;
     private String caption;
     private ArrayList<AnswerRecordRestModel> answers;
 
@@ -16,6 +20,8 @@ public class ModelQuestion {
         this.id = id;
         this.caption = caption;
         this.answers = answers;
+
+        setUserChoice(-1);
     }
 
     public int getChapterId() {
@@ -31,4 +37,16 @@ public class ModelQuestion {
     public ArrayList<AnswerRecordRestModel> getAnswers() {
         return answers;
     }
+
+    public int getUserChoice() {
+        return userChoice;
+    }
+
+    public void setUserChoice(int userChoice) {
+        this.userChoice = userChoice;
+    }
+
+    public int getNeutralAnswerColor() { return R.color.colorLightGray; }
+    public int getRightAnswerColor() { return R.color.colorLightGreen; }
+    public int getWrongAnswerColor() { return R.color.colorLightRed; }
 }

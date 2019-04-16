@@ -71,11 +71,20 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
         int i = 0;
         for (AnswerRecordRestModel answer:modelQuestion.getAnswers()) {
+            int color = modelQuestion.getNeutralAnswerColor();
+
+            int choice = modelQuestion.getUserChoice();
+            if (choice == i)
+                if (answer.is_correct == 1) color = modelQuestion.getRightAnswerColor();
+                else color = modelQuestion.getWrongAnswerColor();
+
             TextView view = views.get(i++);
             view.setText(answer.content);
             view.setVisibility(View.VISIBLE);
+            view.setBackgroundResource(color);
         }
     }
+
     static QuestionViewpagerHolder create(LayoutInflater inflater, ViewGroup parent) {
         return new QuestionViewpagerHolder(inflater.inflate(R.layout.test_question_fragment, parent, false));
     }
