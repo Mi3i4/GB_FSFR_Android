@@ -10,6 +10,7 @@ public interface IQuestionViewpager {
     void gotoNextPage();
 
     void setRedColor(int choice);
+
     void setGreenolor(int choice);
 
 }

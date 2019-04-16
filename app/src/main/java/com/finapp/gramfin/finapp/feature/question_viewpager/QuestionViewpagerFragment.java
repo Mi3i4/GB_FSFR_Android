@@ -10,11 +10,11 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.IQuestionViewpager;
-import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.ISetColorViewBackground;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.PresenterQuestionViewpager;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
 
     private ViewPager2 viewPager;
 
-    private ISetColorViewBackground iSetColorViewBackground;
+    private List<TextView> listChoices;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -47,7 +47,8 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     }
 
     @Override
-    public void onFeedClick(int choice, int id) {
+    public void onFeedClick(int choice, int id, List<TextView> listChoices) {
+        this.listChoices = listChoices;
         presenterQuestionViewpager.callBack(choice, id);
     }
 
@@ -67,12 +68,12 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
 
     @Override
     public void setRedColor(int choice) {
-        iSetColorViewBackground.setBackGroundRedColor(choice);
+        listChoices.get(choice).setBackgroundResource(R.color.colorLightRed);
     }
 
     @Override
     public void setGreenolor(int choice) {
-        iSetColorViewBackground.setBackGroundGreenColor(choice);
+        listChoices.get(choice).setBackgroundResource(R.color.colorLightGreen);
 
     }
 
