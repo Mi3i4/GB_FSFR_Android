@@ -46,4 +46,7 @@ public class ModelQuestion {
         this.userChoice = userChoice;
     }
 
+    public int getNeutralAnswerColor() { return R.color.colorLightGray; }
+    public int getRightAnswerColor() { return R.color.colorLightGreen; }
+    public int getWrongAnswerColor() { return R.color.colorLightRed; }
 }
