@@ -52,27 +52,23 @@ public class PresenterQuestionViewpager {
                 });
     }
 
-    private void setAnswer(View view, ModelQuestion modelQuestion, int choice) {
+    private void setAnswer(ModelQuestion modelQuestion, int choice) {
         modelQuestion.setUserChoice(choice);
 
         ArrayList<AnswerRecordRestModel> answers = modelQuestion.getAnswers();
         AnswerRecordRestModel answer = answers.get(choice);
 
-        if (answer.is_correct == 1) { view.setBackgroundResource(modelQuestion.getRightAnswerColor()); }
-        else { view.setBackgroundResource(modelQuestion.getWrongAnswerColor()); }
+        if (answer.is_correct == 1) {
+            iQuestionViewpager.setGreenolor(choice);
+        } else {
+            iQuestionViewpager.setRedColor(choice);
+        }
 
         iQuestionViewpager.gotoNextPage();
     }
 
-    public void callBack(View view, int id) {
+    public void callBack(int choice, int id) {
         ModelQuestion modelQuestion = questionList.get(id);
-
-        switch (view.getId()) {
-            case R.id.answer_choice_1: setAnswer(view, modelQuestion, 0); break;
-            case R.id.answer_choice_2: setAnswer(view, modelQuestion, 1); break;
-            case R.id.answer_choice_3: setAnswer(view, modelQuestion, 2); break;
-            case R.id.answer_choice_4: setAnswer(view, modelQuestion, 3); break;
-            default: FragmentRouter.getInstance().notImplementedToast();
-        }
+        setAnswer(modelQuestion, choice);
     }
 }

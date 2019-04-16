@@ -1,7 +1,10 @@
 package com.finapp.gramfin.finapp.feature.question_viewpager;
 
 import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
+
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +14,16 @@ import android.widget.TextView;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
+import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.IQuestionViewpager;
+import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.ISetColorViewBackground;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 import java.util.Arrays;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
+public class QuestionViewpagerHolder extends RecyclerView.ViewHolder implements ISetColorViewBackground {
     private View root;
 
     private TextView textQuestion;
@@ -45,12 +51,28 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         answer_choice_4 = root.findViewById(R.id.answer_choice_4);
 
         views = Arrays.asList(answer_choice_1, answer_choice_2, answer_choice_3, answer_choice_4);
-        for (TextView view:views) {
+        for (TextView view : views) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
-                        listener.onFeedClick(v, id);
+
+                        switch (v.getId()) {
+                            case R.id.answer_choice_1:
+                                listener.onFeedClick(0, id);
+                                break;
+                            case R.id.answer_choice_2:
+                                listener.onFeedClick(1, id);
+                                break;
+                            case R.id.answer_choice_3:
+                                listener.onFeedClick(2, id);
+                                break;
+                            case R.id.answer_choice_4:
+                                listener.onFeedClick(3, id);
+                                break;
+                            default:
+                                FragmentRouter.getInstance().notImplementedToast();
+                        }
                     }
                 }
             });
@@ -70,13 +92,16 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         textQuestion.setText(modelQuestion.getCaption());
 
         int i = 0;
-        for (AnswerRecordRestModel answer:modelQuestion.getAnswers()) {
+        for (AnswerRecordRestModel answer : modelQuestion.getAnswers()) {
             int color = modelQuestion.getNeutralAnswerColor();
 
             int choice = modelQuestion.getUserChoice();
             if (choice == i) {
-                if (answer.is_correct == 1) { color = modelQuestion.getRightAnswerColor(); }
-                else { color = modelQuestion.getWrongAnswerColor(); }
+                if (answer.is_correct == 1) {
+                    color = modelQuestion.getRightAnswerColor();
+                } else {
+                    color = modelQuestion.getWrongAnswerColor();
+                }
             }
 
             TextView view = views.get(i++);
@@ -88,5 +113,15 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
     static QuestionViewpagerHolder create(LayoutInflater inflater, ViewGroup parent) {
         return new QuestionViewpagerHolder(inflater.inflate(R.layout.test_question_fragment, parent, false));
+    }
+
+    @Override
+    public void setBackGroundRedColor(int choice) {
+        views.get(choice).setBackgroundResource(R.color.colorLightRed);
+    }
+
+    @Override
+    public void setBackGroundGreenColor(int choice) {
+        views.get(choice).setBackgroundResource(R.color.colorLightGreen);
     }
 }
