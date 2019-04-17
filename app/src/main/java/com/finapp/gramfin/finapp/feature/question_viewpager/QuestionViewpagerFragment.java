@@ -1,6 +1,7 @@
 package com.finapp.gramfin.finapp.feature.question_viewpager;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
@@ -22,6 +24,8 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     private PresenterQuestionViewpager presenterQuestionViewpager;
 
     private ViewPager2 viewPager;
+
+    private TextView textChoice;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -43,8 +47,9 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     }
 
     @Override
-    public void onFeedClick(View v, int id) {
-        presenterQuestionViewpager.callBack(v, id);
+    public void onFeedClick(int choice, int id, TextView textChoice) {
+        this.textChoice = textChoice;
+        presenterQuestionViewpager.callBack(choice, id);
     }
 
     @Override
@@ -56,6 +61,20 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     @Override
     public void gotoNextPage() {
         int item = viewPager.getCurrentItem();
-        if (++item < viewPager.getAdapter().getItemCount()) viewPager.setCurrentItem(item);
+        if (++item < viewPager.getAdapter().getItemCount()) {
+            viewPager.setCurrentItem(item);
+        }
     }
+
+    @Override
+    public void setRedColor(int choice) {
+        textChoice.setBackgroundResource(R.color.colorLightRed);
+    }
+
+    @Override
+    public void setGreenolor(int choice) {
+        textChoice.setBackgroundResource(R.color.colorLightGreen);
+
+    }
+
 }

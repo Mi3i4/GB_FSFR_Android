@@ -34,9 +34,12 @@ public class PresenterQuestionViewpager {
         QuestionLoader.getInstance()
                 .getDataRecord(chapter_id, random.nextInt(QUESTIONS_AMOUNT), new QuestionLoader.OnRequestListener() {
                     @Override
-                    public void onComplete(@Nullable DataRecordRestModel result) {
+                    public void onComplete(@Nullable DataRecordRestModel result, String error) {
                         if (result != null) {
                             ModelQuestion model = new ModelQuestion(chapter_id, result.id, result.content, result.answers);
+                            questionList.add(model);
+                        } else if (!error.equals(QuestionLoader.QUESTION_NOT_FOUND)) {
+                            ModelQuestion model = new ModelQuestion(chapter_id, -1, error, new ArrayList<AnswerRecordRestModel>());
                             questionList.add(model);
                         }
 
@@ -49,22 +52,23 @@ public class PresenterQuestionViewpager {
                 });
     }
 
-    private void setAnswer(View view, AnswerRecordRestModel answer) {
-        if (answer.is_correct == 1) view.setBackgroundResource(R.color.colorLightGreen);
-        else view.setBackgroundResource(R.color.colorLightRed);
+    private void setAnswer(ModelQuestion modelQuestion, int choice) {
+        modelQuestion.setUserChoice(choice);
+
+        ArrayList<AnswerRecordRestModel> answers = modelQuestion.getAnswers();
+        AnswerRecordRestModel answer = answers.get(choice);
+
+        if (answer.is_correct == 1) {
+            iQuestionViewpager.setGreenolor(choice);
+        } else {
+            iQuestionViewpager.setRedColor(choice);
+        }
 
         iQuestionViewpager.gotoNextPage();
     }
 
-    public void callBack(View view, int id) {
-        ArrayList<AnswerRecordRestModel> answers = questionList.get(id).getAnswers();
-
-        switch (view.getId()) {
-            case R.id.answer_choice_1: setAnswer(view, answers.get(0)); break;
-            case R.id.answer_choice_2: setAnswer(view, answers.get(1)); break;
-            case R.id.answer_choice_3: setAnswer(view, answers.get(2)); break;
-            case R.id.answer_choice_4: setAnswer(view, answers.get(3)); break;
-            default: FragmentRouter.getInstance().notImplementedToast();
-        }
+    public void callBack(int choice, int id) {
+        ModelQuestion modelQuestion = questionList.get(id);
+        setAnswer(modelQuestion, choice);
     }
 }

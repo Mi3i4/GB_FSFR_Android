@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QuestionRepo {
-    private static final String API_URL = "http://185.178.46.111/";
+    private static final String API_URL = "http:/185.178.46.111/";
 
     private static QuestionAPI API;
     private static QuestionRepo instance = null;
