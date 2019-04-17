@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 import com.finapp.gramfin.finapp.feature.second_screen.presenter.IFragmentChooseChapter;
@@ -38,6 +37,7 @@ public class FragmentChapterSeliction extends Fragment implements IFragmentChoos
     }
 
     private void initViews(View view) {
+        getActivity().setTitle("ТРЕНИРОВКА");
         recViewChapters = view.findViewById(R.id.recViewChapter);
     }
 
