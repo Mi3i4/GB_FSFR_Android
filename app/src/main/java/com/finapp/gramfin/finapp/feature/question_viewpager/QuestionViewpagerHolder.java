@@ -1,9 +1,7 @@
 package com.finapp.gramfin.finapp.feature.question_viewpager;
 
 import android.annotation.SuppressLint;
-
 import androidx.annotation.NonNull;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +88,6 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
 
         int i = 0;
         for (AnswerRecordRestModel answer : modelQuestion.getAnswers()) {
-
             TextView view = listChoices.get(i++);
             view.setText(answer.content);
             view.setVisibility(View.VISIBLE);
@@ -101,5 +98,4 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     static QuestionViewpagerHolder create(LayoutInflater inflater, ViewGroup parent) {
         return new QuestionViewpagerHolder(inflater.inflate(R.layout.test_question_fragment, parent, false));
     }
-
 }
