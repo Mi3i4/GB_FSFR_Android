@@ -11,6 +11,6 @@ public interface IQuestionViewpager {
 
     void setRedColor(int choice);
 
-    void setGreenolor(int choice);
+    void setGreenColor(int choice);
 
 }
