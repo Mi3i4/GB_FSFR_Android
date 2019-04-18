@@ -1,6 +1,8 @@
 package com.finapp.gramfin.finapp.feature.main_menu_fragment;
 
 import androidx.lifecycle.ViewModelProviders;
+
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,12 +10,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
+import com.finapp.gramfin.finapp.feature.main_menu_fragment.model.ModelMainMenuItem;
 import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
-public class MainMenuFragment extends Fragment implements View.OnClickListener {
+public class MainMenuFragment extends Fragment {
 
     private MainMenuViewModel viewModel;
 
@@ -33,31 +39,37 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
         getActivity().setTitle(R.string.main_menu_title);
 
-        Button btn_start_learning = getView().findViewById(R.id.btn_start_learning);
-        Button btn_start_training = getView().findViewById(R.id.btn_start_training);
-        Button btn_start_exam = getView().findViewById(R.id.btn_start_exam);
-
-        btn_start_learning.setOnClickListener(this);
-        btn_start_training.setOnClickListener(this);
-        btn_start_exam.setOnClickListener(this);
-
         viewModel = ViewModelProviders.of(this).get(MainMenuViewModel.class);
+        viewModel.setupModel();
+
+        ListView listView = getView().findViewById(R.id.lvMainMenu);
+        ArrayAdapter<ModelMainMenuItem> adapter = new MainMenuAdapter(getActivity());
+        listView.setAdapter(adapter);
+
     }
 
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.btn_start_learning:
-                // TODO: Implement кнопка "Изучение" нажата
-                FragmentRouter.getInstance().notImplementedToast();
-                break;
-            case R.id.btn_start_training:
-                viewModel.startTraining();
-                break;
-            case R.id.btn_start_exam:
-                // TODO: Implement кнопка "Экзамен" нажата
-                FragmentRouter.getInstance().notImplementedToast();
-                break;
+    private class MainMenuAdapter extends ArrayAdapter<ModelMainMenuItem> {
+
+        public MainMenuAdapter(@NonNull Context context) {
+            super(context, R.layout.main_menu_item, viewModel.getListMainMenu());
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final ModelMainMenuItem mainMenuItem = getItem(position);
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.main_menu_item, null);
+            }
+            ((ImageView) convertView.findViewById(R.id.main_menu_btn_img))
+                    .setImageResource(mainMenuItem.getImage());
+            ((TextView) convertView.findViewById(R.id.main_menu_btn_title))
+                    .setText(mainMenuItem.getTitle());
+
+            convertView.setOnClickListener(mainMenuItem.getListener());
+
+            return convertView;
         }
     }
 }
