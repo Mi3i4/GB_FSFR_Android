@@ -25,5 +25,6 @@
     <string name="btn_start_exam_text">Экзамен</string>
     <string name="home_link_test">На начальный экран</string>
     <string name="under_construction">Функционал еще не готов...</string>
+    <string name="button_skip_text">ПРОПУСТИТЬ</string>
 
 </resources>

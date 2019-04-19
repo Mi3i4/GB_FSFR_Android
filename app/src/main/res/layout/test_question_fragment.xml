@@ -14,10 +14,8 @@
         android:layout_margin="10dp"
         android:background="@drawable/circle_text"
         android:gravity="top"
-        android:text="TitleNumberOfChapter"
-        android:textColor="@color/colorWhite"
-
-        />
+        android:text="titleNumberOfChapter"
+        android:textColor="@color/colorWhite" />
 
 
     <TextView
@@ -26,8 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="66dp"
         android:layout_marginTop="10dp"
-
-        android:text="TitleNameChapter"
+        android:text="titleNameChapter"
         android:textColor="@color/colorBlackText"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -39,9 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="66dp"
         android:layout_marginTop="36dp"
-        android:layout_weight="1"
         android:lines="1"
-        android:text="TitleNumberOfQuestions"
+        android:text="titleNumberOfQuestions"
         android:textColor="@color/colorTextNumberOfQuestions"
         android:textSize="12sp"
         android:textStyle="normal" />
@@ -52,7 +48,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/button_skip"
         android:layout_below="@id/title_number_of_chapter"
-        android:gravity="center_vertical"
+        android:gravity="top"
         android:orientation="vertical">
 
 
@@ -61,6 +57,7 @@
             android:id="@+id/scrollView_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
 
             >
 
@@ -80,11 +77,14 @@
                     tools:text="@string/text_current_question" />
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="11dp"
-                    android:layout_marginVertical="4dp"
-                    app:cardBackgroundColor="@color/colorWhite"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
                     app:cardCornerRadius="4dp"
                     app:cardElevation="0dp">
 
@@ -93,8 +93,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginVertical="14dp"
                         android:layout_marginLeft="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         tools:text="@string/answer_choice_1" />
 
                     <CheckBox
@@ -108,11 +109,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="11dp"
-                    android:layout_marginVertical="4dp"
-                    app:cardBackgroundColor="@color/colorLightRed2"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
                     app:cardCornerRadius="4dp"
                     app:cardElevation="0dp">
 
@@ -121,8 +125,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginVertical="14dp"
                         android:layout_marginLeft="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         tools:text="@string/answer_choice_2" />
 
                     <CheckBox
@@ -138,11 +143,14 @@
 
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="11dp"
-                    android:layout_marginVertical="4dp"
-                    app:cardBackgroundColor="@color/colorWhite"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
                     app:cardCornerRadius="4dp"
                     app:cardElevation="0dp">
 
@@ -151,8 +159,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginVertical="14dp"
                         android:layout_marginLeft="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         tools:text="@string/answer_choice_3" />
 
                     <CheckBox
@@ -166,11 +175,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="11dp"
-                    android:layout_marginVertical="4dp"
-                    app:cardBackgroundColor="@color/colorLightGreen2"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
                     app:cardCornerRadius="4dp"
                     app:cardElevation="0dp">
 
@@ -179,8 +191,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginVertical="14dp"
                         android:layout_marginLeft="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         android:text="@string/answer_choice_4" />
 
                     <CheckBox
@@ -206,11 +219,13 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="22dp"
-        android:background="@color/colorPrimary"
-        android:paddingHorizontal="16dp"
-
-        android:paddingVertical="12dp"
-        android:text="ПРОПУСТИТЬ"
+        android:background="@drawable/element_background_button_skip"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingTop="12dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="12dp"
+        android:text="@string/button_skip_text"
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
 
