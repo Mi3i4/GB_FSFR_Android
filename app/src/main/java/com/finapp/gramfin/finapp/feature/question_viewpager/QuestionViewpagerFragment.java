@@ -1,8 +1,10 @@
 package com.finapp.gramfin.finapp.feature.question_viewpager;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -23,9 +25,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
 
     private ViewPager2 viewPager;
 
-    public static QuestionViewpagerFragment newInstance() {
-        return new QuestionViewpagerFragment();
-    }
+    private CardView textChoice;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -36,7 +36,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Тренировка");
+        getActivity().setTitle("ТРЕНИРОВКА");
         viewPager = view.findViewById(R.id.questionViewpager);
         presenterQuestionViewpager = new PresenterQuestionViewpager(this);
     }
@@ -46,9 +46,11 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
         super.onActivityCreated(savedInstanceState);
     }
 
+
     @Override
-    public void onFeedClick(View v) {
-        presenterQuestionViewpager.callBack(v);
+    public void onFeedClick(int choice, int id, CardView textChoice) {
+        this.textChoice = textChoice;
+        presenterQuestionViewpager.callBack(choice, id);
     }
 
     @Override
@@ -56,4 +58,26 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
         QuestionViewpagerAdapter questionViewpagerAdapter = new QuestionViewpagerAdapter(this, listQuestion);
         viewPager.setAdapter(questionViewpagerAdapter);
     }
+
+    @Override
+    public void gotoNextPage() {
+        int item = viewPager.getCurrentItem();
+        if (++item < viewPager.getAdapter().getItemCount()) {
+            viewPager.setCurrentItem(item);
+        }
+    }
+
+    @Override
+    public void setRedColor(int choice) {
+        textChoice.setBackgroundResource(R.drawable.element_background_answer_cardview_false);
+
+    }
+
+    @Override
+    public void setGreenColor(int choice) {
+        textChoice.setBackground(getResources().getDrawable(R.drawable.element_background_answer_cardview_true));
+
+    }
+
+
 }
