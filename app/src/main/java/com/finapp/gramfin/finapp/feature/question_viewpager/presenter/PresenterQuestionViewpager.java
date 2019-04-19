@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.DataRecordRestModel;
+import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 import com.finapp.gramfin.finapp.service.QuestionLoader;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.Nullable;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class PresenterQuestionViewpager {
     private static final int QUESTIONS_AMOUNT = 221;
@@ -32,9 +34,12 @@ public class PresenterQuestionViewpager {
         QuestionLoader.getInstance()
                 .getDataRecord(chapter_id, random.nextInt(QUESTIONS_AMOUNT), new QuestionLoader.OnRequestListener() {
                     @Override
-                    public void onComplete(@Nullable DataRecordRestModel result) {
+                    public void onComplete(@Nullable DataRecordRestModel result, String error) {
                         if (result != null) {
                             ModelQuestion model = new ModelQuestion(chapter_id, result.id, result.content, result.answers);
+                            questionList.add(model);
+                        } else if (!error.equals(QuestionLoader.QUESTION_NOT_FOUND)) {
+                            ModelQuestion model = new ModelQuestion(chapter_id, -1, error, new ArrayList<AnswerRecordRestModel>());
                             questionList.add(model);
                         }
 
@@ -45,12 +50,28 @@ public class PresenterQuestionViewpager {
                         else addModelQuestions();
                     }
                 });
+
+
     }
 
-    public void callBack(View v) {
+    private void setAnswer(ModelQuestion modelQuestion, int choice) {
+        modelQuestion.setUserChoice(choice);
 
-        switch (v.getId()) {
-            default: FragmentRouter.getInstance().notImplementedToast();
+        ArrayList<AnswerRecordRestModel> answers = modelQuestion.getAnswers();
+        AnswerRecordRestModel answer = answers.get(choice);
+
+        if (answer.is_correct == 1) {
+            iQuestionViewpager.setGreenColor(choice);
+        } else {
+            iQuestionViewpager.setRedColor(choice);
         }
+
+        iQuestionViewpager.gotoNextPage();
+
+    }
+
+    public void callBack(int choice, int id) {
+        ModelQuestion modelQuestion = questionList.get(id);
+        setAnswer(modelQuestion, choice);
     }
 }
