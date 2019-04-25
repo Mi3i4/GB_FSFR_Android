@@ -25,8 +25,6 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
 
     private ViewPager2 viewPager;
 
-    private TextView textChoice;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -47,9 +45,8 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     }
 
     @Override
-    public void onFeedClick(int choice, int id, TextView textChoice) {
-        this.textChoice = textChoice;
-        presenterQuestionViewpager.callBack(choice, id);
+    public void onFeedClick(View view, int id) {
+        presenterQuestionViewpager.callBack(view, id);
     }
 
     @Override
@@ -64,17 +61,6 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
         if (++item < viewPager.getAdapter().getItemCount()) {
             viewPager.setCurrentItem(item);
         }
-    }
-
-    @Override
-    public void setRedColor(int choice) {
-        textChoice.setBackgroundResource(R.color.colorLightRed);
-    }
-
-    @Override
-    public void setGreenColor(int choice) {
-        textChoice.setBackgroundResource(R.color.colorLightGreen);
-
     }
 
 }
