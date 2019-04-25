@@ -34,7 +34,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        getActivity().setTitle("Тренировка");
         viewPager = view.findViewById(R.id.questionViewpager);
         presenterQuestionViewpager = new PresenterQuestionViewpager(this);
     }

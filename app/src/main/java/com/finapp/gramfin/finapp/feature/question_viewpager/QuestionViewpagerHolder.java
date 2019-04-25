@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
@@ -25,10 +25,9 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     private TextView answer_choice_2;
     private TextView answer_choice_3;
     private TextView answer_choice_4;
-    private TextView findError;
-    private TextView viewComments;
-    private ImageButton buttonExpandMore;
 
+    private Button buttonSkip;
+    private ModelQuestion modelQuestion;
     private List<TextView> views;
     private int id;
     private QuestionViewpagerAdapter.Listener listener;
@@ -57,9 +56,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
             view.setVisibility(View.GONE);
         }
 
-        findError = root.findViewById(R.id.findError);
-        viewComments = root.findViewById(R.id.view_comments);
-        buttonExpandMore = root.findViewById(R.id.button_expand_more);
+        buttonSkip = root.findViewById(R.id.button_skip);
     }
 
     @SuppressLint("SetTextI18n")

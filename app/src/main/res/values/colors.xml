@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#5BB8C0</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#009688</color>
     <color name="colorAccent">#D81B60</color>
+
     <color name="colorLightGray">#F2F2F2</color>
     <color name="colorLightGreen">#996FCF97</color>
     <color name="colorLightRed">#99EB5757</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="mainMenu_btn_back">#EDEDED</color>
-    <color name="mainMenu_btn_text">#000000</color>
+    <color name="colorAqua">#805BB8C0</color>
+    <color name="colorLightGreen2">#334CAF50</color>
+    <color name="colorLightRed2">#1AF44336</color>
+
+
+    <color name="mainMenu_btn_back">#2D9CDB</color>
+    <color name="mainMenu_btn_text">#F2F2F2</color>
     <color name="colorTextNumberOfQuestions">#7F7F7F</color>
     <color name="colorTextIknow">#6FCF97</color>
     <color name="colorTextIdontKnow">#EB5757</color>
     <color name="colorBlackText">#000000</color>
-    <color name="colorBackGroundTrainScreen">#E5E5E5</color>
 
 </resources>
