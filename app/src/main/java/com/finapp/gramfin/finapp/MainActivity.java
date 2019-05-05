@@ -102,19 +102,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected( MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.learning) {
             FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.training) {
 
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.exam) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.statistics) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.bookmark) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.settings) {
 
         }
 
