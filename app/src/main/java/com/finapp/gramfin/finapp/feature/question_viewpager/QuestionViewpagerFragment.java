@@ -72,7 +72,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     }
 
     @Override
-    public void setGreenolor(int choice) {
+    public void setGreenColor(int choice) {
         textChoice.setBackgroundResource(R.color.colorLightGreen);
 
     }
