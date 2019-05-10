@@ -10,7 +10,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
@@ -34,7 +33,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Тренировка");
+        getActivity().setTitle("ТРЕНИРОВКА");
         viewPager = view.findViewById(R.id.questionViewpager);
         presenterQuestionViewpager = new PresenterQuestionViewpager(this);
     }
@@ -45,9 +44,10 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     }
 
     @Override
-    public void onFeedClick(View view, int id) {
-        presenterQuestionViewpager.callBack(view, id);
+    public void onFeedClick(int id, int choice) {
+        presenterQuestionViewpager.callBack(id, choice);
     }
+
 
     @Override
     public void setQuestion(List<ModelQuestion> listQuestion) {
@@ -59,8 +59,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     public void gotoNextPage() {
         int item = viewPager.getCurrentItem();
         if (++item < viewPager.getAdapter().getItemCount()) {
-            viewPager.setCurrentItem(item);
+            viewPager.setCurrentItem(item, true);
         }
     }
-
 }

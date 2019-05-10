@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
@@ -15,103 +16,71 @@ import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRest
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
-import java.util.Arrays;
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.ButterKnife;
+
 public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
-    private View root;
 
-    private TextView textQuestion;
-    private TextView answer_choice_1;
-    private TextView answer_choice_2;
-    private TextView answer_choice_3;
-    private TextView answer_choice_4;
-    private CardView card_answer_choice_1;
-    private CardView card_answer_choice_2;
-    private CardView card_answer_choice_3;
-    private CardView card_answer_choice_4;
+    @BindView(R.id.title_number_of_chapter) public TextView titleNumberOfChapter;
+    @BindView(R.id.title_chapter_name) public TextView titleChapterName;
+    @BindView(R.id.title_topic_name) public TextView titleTopicName;
+    @BindView(R.id.text_question) public TextView textQuestion;
+    @BindView(R.id.button_skip) public Button buttonSkip;
 
-    private List<TextView> listChoices;
-    private List<CardView> listChoicesCard;
+    @BindViews({R.id.card_answer_choice_1, R.id.card_answer_choice_2, R.id.card_answer_choice_3, R.id.card_answer_choice_4})
+    public List<CardView> listChoicesCard;
+    @BindViews({R.id.answer_choice_1, R.id.answer_choice_2, R.id.answer_choice_3, R.id.answer_choice_4})
+    public List<TextView> listChoices;
+    @BindViews({R.id.answer_checkbox_1, R.id.answer_checkbox_2, R.id.answer_checkbox_3, R.id.answer_checkbox_4})
+    public List<CheckBox> listChoicesCheckboxes;
 
-    private Button buttonSkip;
     private ModelQuestion modelQuestion;
-    private List<TextView> views;
     private int id;
     private QuestionViewpagerAdapter.Listener listener;
 
     public QuestionViewpagerHolder(@NonNull View itemView) {
         super(itemView);
 
-        root = itemView;
-        textQuestion = root.findViewById(R.id.text_question);
+        ButterKnife.bind(this, itemView);
 
-        answer_choice_1 = root.findViewById(R.id.answer_choice_1);
-        answer_choice_2 = root.findViewById(R.id.answer_choice_2);
-        answer_choice_3 = root.findViewById(R.id.answer_choice_3);
-        answer_choice_4 = root.findViewById(R.id.answer_choice_4);
-
-        card_answer_choice_1 = root.findViewById(R.id.card_answer_choice_1);
-        card_answer_choice_2 = root.findViewById(R.id.card_answer_choice_2);
-        card_answer_choice_3 = root.findViewById(R.id.card_answer_choice_3);
-        card_answer_choice_4 = root.findViewById(R.id.card_answer_choice_4);
-
-        views = Arrays.asList(answer_choice_1, answer_choice_2, answer_choice_3, answer_choice_4);
-        for (TextView view:views) {
+        for (final CardView view:listChoicesCard) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
-                        listener.onFeedClick(v, id);
+                        listener.onFeedClick(id, listChoicesCard.indexOf(view));
+                        initViews(modelQuestion);
                     }
                 }
             });
             view.setVisibility(View.GONE);
         }
 
-        buttonSkip = root.findViewById(R.id.button_skip);
+        for (final CheckBox view:listChoicesCheckboxes) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onFeedClick(id, listChoicesCheckboxes.indexOf(view));
+                        initViews(modelQuestion);
+                    }
+                }
+            });
+        }
+
         buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //gotoNextPage()
                 FragmentRouter.getInstance().notImplementedToast();
-
             }
         });
-
-        listChoicesCard = Arrays.asList(card_answer_choice_1, card_answer_choice_2, card_answer_choice_3, card_answer_choice_4);
-        listChoices = Arrays.asList(answer_choice_1, answer_choice_2, answer_choice_3, answer_choice_4);
-        for (CardView view : listChoicesCard) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-
-                        switch (v.getId()) {
-                            case R.id.card_answer_choice_1:
-                                listener.onFeedClick(0, id, card_answer_choice_1);
-                                break;
-                            case R.id.card_answer_choice_2:
-                                listener.onFeedClick(1, id, card_answer_choice_2);
-                                break;
-                            case R.id.card_answer_choice_3:
-                                listener.onFeedClick(2, id, card_answer_choice_3);
-                                break;
-                            case R.id.card_answer_choice_4:
-                                listener.onFeedClick(3, id, card_answer_choice_4);
-                                break;
-                            default:
-                                FragmentRouter.getInstance().notImplementedToast();
-                        }
-                    }
-                }
-            });
-            // view.setVisibility(View.GONE);
-        }
-
 
     }
 
@@ -121,28 +90,42 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         this.modelQuestion = modelQuestion;
         this.id = id;
 
+        titleNumberOfChapter.setText(new StringBuilder(1).append(modelQuestion.getChapterId()));
+        titleChapterName.setText(modelQuestion.getChapterName());
+        titleTopicName.setText(modelQuestion.getTopicName());
+
+        initViews(modelQuestion);
+    }
+
+    void initViews(ModelQuestion modelQuestion) {
         textQuestion.setText(modelQuestion.getCaption());
 
         int i = 0;
-        for (AnswerRecordRestModel answer:modelQuestion.getAnswers()) {
-            int color = modelQuestion.getNeutralAnswerColor();
+        int choice = modelQuestion.getUserChoice();
 
-            int choice = modelQuestion.getUserChoice();
+        for (AnswerRecordRestModel answer:modelQuestion.getAnswers()) {
+            int background_res = R.drawable.element_background_answer_cardview;
+            boolean checked = false;
+
             if (choice == i) {
-                if (answer.is_correct == 1) { color = modelQuestion.getRightAnswerColor(); }
-                else { color = modelQuestion.getWrongAnswerColor(); }
+                checked = true;
+
+                if (answer.is_correct == 1) { background_res = R.drawable.element_background_answer_cardview_true; }
+                else { background_res = R.drawable.element_background_answer_cardview_false; }
             }
 
-            TextView view = views.get(i++);
+            TextView view = listChoices.get(i);
             view.setText(answer.content);
-            view.setVisibility(View.VISIBLE);
-            view.setBackgroundResource(color);
-        }
-        for (CardView cardView:listChoicesCard){
-            cardView.setBackgroundResource(R.color.colorWhite);
 
+            CheckBox checkBox = listChoicesCheckboxes.get(i);
+            checkBox.setChecked(checked);
+
+            CardView cardView = listChoicesCard.get(i++);
+            cardView.setVisibility(View.VISIBLE);
+            cardView.setBackgroundResource(background_res);
         }
     }
+
     static QuestionViewpagerHolder create(LayoutInflater inflater, ViewGroup parent) {
         return new QuestionViewpagerHolder(inflater.inflate(R.layout.test_question_fragment, parent, false));
     }

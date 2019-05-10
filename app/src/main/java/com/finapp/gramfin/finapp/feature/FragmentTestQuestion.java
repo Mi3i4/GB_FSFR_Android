@@ -87,9 +87,9 @@ public class FragmentTestQuestion extends Fragment implements View.OnClickListen
         int correctAnswer = 4;
         if (e == correctAnswer) {
 
-            view.setBackgroundResource(R.color.colorLightGreen2);
+            view.setBackgroundResource(R.color.colorLightGreen);
         } else {
-            view.setBackgroundResource(R.color.colorLightRed2);
+            view.setBackgroundResource(R.color.colorLightRed);
         }
         ;
     }

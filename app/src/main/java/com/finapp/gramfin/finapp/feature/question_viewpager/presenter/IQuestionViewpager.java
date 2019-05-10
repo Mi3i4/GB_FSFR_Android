@@ -6,7 +6,5 @@ import java.util.List;
 
 public interface IQuestionViewpager {
     void setQuestion(List<ModelQuestion> listQuestion);
-
     void gotoNextPage();
-
 }

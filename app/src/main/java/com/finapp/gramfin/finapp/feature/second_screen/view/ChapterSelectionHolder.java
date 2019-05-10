@@ -11,27 +11,33 @@ import android.widget.TextView;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 class ChapterSelectionHolder extends RecyclerView.ViewHolder {
-    private View root;
-    private TextView numberOfChapter;
-    private TextView nameChapter;
-    private TextView numberOfQuetions;
-    private TextView textIknow;
-    private TextView textIdontKnow;
+
+    @BindView(R.id.number_of_chapter) public TextView numberOfChapter;
+    @BindView(R.id.chapter_name) public TextView nameChapter;
+    @BindView(R.id.title_topic_name) public TextView numberOfQuetions;
+    @BindView(R.id.i_know) public TextView textIknow;
+    @BindView(R.id.i_dont_know) public TextView textIdontKnow;
+
     private ModelChapter modelChapter;
     private int id;
     private ChapterSelectionAdapter.Listener listener;
 
     private ChapterSelectionHolder(@NonNull View itemView) {
         super(itemView);
+
+        ButterKnife.bind(this, itemView);
+
         numberOfChapter = itemView.findViewById(R.id.number_of_chapter);
         nameChapter = itemView.findViewById(R.id.chapter_name);
-        numberOfQuetions = itemView.findViewById(R.id.number_of_questions);
+        numberOfQuetions = itemView.findViewById(R.id.title_topic_name);
         textIknow = itemView.findViewById(R.id.i_know);
         textIdontKnow = itemView.findViewById(R.id.i_dont_know);
 
-        root = itemView;
-        root.setOnClickListener(new View.OnClickListener() {
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
