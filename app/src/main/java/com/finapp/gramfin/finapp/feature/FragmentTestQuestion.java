@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,9 +19,8 @@ public class FragmentTestQuestion extends Fragment implements View.OnClickListen
     TextView answer_choice_2;
     TextView answer_choice_3;
     TextView answer_choice_4;
-    TextView findError;
-    TextView viewComments;
-    ImageButton buttonExpandMore;
+
+    Button buttonSkip;
 
     private void initViews() {
 
@@ -28,9 +28,8 @@ public class FragmentTestQuestion extends Fragment implements View.OnClickListen
         answer_choice_2 = getView().findViewById(R.id.answer_choice_2);
         answer_choice_3 = getView().findViewById(R.id.answer_choice_3);
         answer_choice_4 = getView().findViewById(R.id.answer_choice_4);
-        findError = getView().findViewById(R.id.findError);
-        viewComments = getView().findViewById(R.id.view_comments);
-        buttonExpandMore = getView().findViewById(R.id.button_expand_more);
+
+        buttonSkip = getView().findViewById(R.id.button_skip);
     }
 
     @Override
@@ -80,9 +79,7 @@ public class FragmentTestQuestion extends Fragment implements View.OnClickListen
         answer_choice_2.setOnClickListener(this);
         answer_choice_3.setOnClickListener(this);
         answer_choice_4.setOnClickListener(this);
-        findError.setOnClickListener(this);
-        viewComments.setOnClickListener(this);
-        buttonExpandMore.setOnClickListener(this);
+        buttonSkip.setOnClickListener(this);
     }
 
     // условная реализация проверки правильности ответа на вопрос, для проверки работы экрана 3(очень условная)
