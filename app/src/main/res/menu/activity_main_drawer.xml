@@ -7,10 +7,9 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/learning"
+            android:checked="true"
             android:icon="@drawable/learning_selected"
-            android:title="@string/learning"
-
-            />
+            android:title="@string/learning" />
         <item
             android:id="@+id/training"
             android:icon="@drawable/training"
@@ -18,7 +17,9 @@
         <item
             android:id="@+id/exam"
             android:icon="@drawable/exam"
-            android:title="@string/exam" />
+            android:title="@string/exam"
+
+            />
         <item
             android:id="@+id/statistics"
             android:icon="@drawable/statistics"
@@ -47,14 +48,6 @@
             android:title="@string/exit" />
 
     </group>
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/settings_1"
-                android:icon="@drawable/settings"
-                android:title="Настройки" />
 
-        </menu>
-    </item>
 
 </menu>
