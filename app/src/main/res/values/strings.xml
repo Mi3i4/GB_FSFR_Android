@@ -29,5 +29,10 @@
     <string name="home_link_test">На начальный экран</string>
     <string name="under_construction">Функционал еще не готов...</string>
     <string name="button_skip_text">ПРОПУСТИТЬ</string>
+    <string name="totals_btn_repeat_text">ПОВТОРИТЬ</string>
+    <string name="totals_btn_home_text">НА ГЛАВНУЮ</string>
+    <string name="totals_text_congratulation">Поздравляем,\nтренировка окончена!</string>
+    <string name="totals_text_result">Ваш результат:</string>
+    <string name="totals_text">9 / 10</string>
 
 </resources>

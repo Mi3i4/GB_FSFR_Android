@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 
 import java.util.List;

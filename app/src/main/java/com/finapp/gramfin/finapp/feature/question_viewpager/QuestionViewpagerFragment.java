@@ -15,6 +15,8 @@ import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.IQuestionViewpager;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.PresenterQuestionViewpager;
+import com.finapp.gramfin.finapp.feature.training_totals.TrainingTotals;
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("ТРЕНИРОВКА");
+        getActivity().setTitle(R.string.training_title);
         viewPager = view.findViewById(R.id.questionViewpager);
         presenterQuestionViewpager = new PresenterQuestionViewpager(this);
     }
@@ -60,6 +62,8 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
         int item = viewPager.getCurrentItem();
         if (++item < viewPager.getAdapter().getItemCount()) {
             viewPager.setCurrentItem(item, true);
+        } else {
+            FragmentRouter.getInstance().placeFragment(TrainingTotals.class);
         }
     }
 }

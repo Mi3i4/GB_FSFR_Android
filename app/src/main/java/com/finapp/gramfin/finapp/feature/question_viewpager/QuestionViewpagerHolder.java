@@ -72,6 +72,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
                     }
                 }
             });
+            view.setVisibility(View.GONE);
         }
 
         buttonSkip.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +119,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
             view.setText(answer.content);
 
             CheckBox checkBox = listChoicesCheckboxes.get(i);
+            checkBox.setVisibility(View.VISIBLE);
             checkBox.setChecked(checked);
 
             CardView cardView = listChoicesCard.get(i++);
