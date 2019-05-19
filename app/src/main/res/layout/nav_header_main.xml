@@ -45,7 +45,7 @@
             android:layout_below="@id/name_id"
             android:layout_marginLeft="11dp"
             android:layout_toRightOf="@id/photo"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:paddingTop="5dp"
             android:text="@string/nav_header_subtitle"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />

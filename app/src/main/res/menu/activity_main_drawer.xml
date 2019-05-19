@@ -7,7 +7,6 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/learning"
-            android:checked="true"
             android:icon="@drawable/learning_selected"
             android:title="@string/learning" />
         <item
