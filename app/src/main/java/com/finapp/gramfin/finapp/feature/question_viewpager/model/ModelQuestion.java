@@ -11,6 +11,7 @@ public class ModelQuestion {
     private String topicName;
     private int id;
     private int userChoice;
+    private boolean haveRightChoice;
     private String caption;
     private ArrayList<AnswerRecordRestModel> answers;
 
@@ -35,17 +36,18 @@ public class ModelQuestion {
     public String getChapterName() { return chapterName; }
     public String getTopicName() { return topicName; }
 
+    public boolean getHaveRightChoice() { return haveRightChoice; }
+
     public ArrayList<AnswerRecordRestModel> getAnswers() {
         return answers;
     }
 
     public void setUserChoice(int userChoice) {
         this.userChoice = userChoice;
+        if (userChoice >= 0 && userChoice < answers.size()) { this.haveRightChoice = answers.get(userChoice).is_correct == 1; }
+        else { this.haveRightChoice = false; }
     }
-    public void setChapterName(String chapterName) {
-        this.chapterName = chapterName;
-    }
-    public void setTopicName(String topicName) {
-        this.topicName = topicName;
-    }
+
+    public void setChapterName(String chapterName) { this.chapterName = chapterName; }
+    public void setTopicName(String topicName) { this.topicName = topicName; }
 }

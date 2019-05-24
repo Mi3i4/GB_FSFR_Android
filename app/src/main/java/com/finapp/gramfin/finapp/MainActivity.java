@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
 
 
         FragmentRouter.getInstance().setContext(this, getSupportFragmentManager());
-        FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
+        FragmentRouter.getInstance().placeFragment(MainMenuFragment.class, null);
     }
 
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
+            FragmentRouter.getInstance().placeFragment(MainMenuFragment.class, null);
 
         } else if (id == R.id.nav_gallery) {
 

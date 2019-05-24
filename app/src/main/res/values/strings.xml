@@ -34,5 +34,6 @@
     <string name="totals_text_congratulation">Поздравляем,\nтренировка окончена!</string>
     <string name="totals_text_result">Ваш результат:</string>
     <string name="totals_text">9 / 10</string>
+    <string name="router_tag">RouterTag</string>
 
 </resources>

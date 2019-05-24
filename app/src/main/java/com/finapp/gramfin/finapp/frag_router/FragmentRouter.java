@@ -1,9 +1,11 @@
 package com.finapp.gramfin.finapp.frag_router;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -37,8 +39,11 @@ public class FragmentRouter {
         Toast.makeText(context, context.getString(R.string.under_construction), Toast.LENGTH_SHORT).show();
     }
 
-    public void placeFragment(@NonNull Class<?> cls) {
-        Fragment fragment = Fragment.instantiate(context, cls.getName(),null);
+    public void placeFragment(@NonNull Class<?> cls, @Nullable Bundle bundle) {
+        Fragment fragment = Fragment.instantiate(context, cls.getName());
+
+        if (bundle != null) fragment.setArguments(bundle);
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.drawer_layout, fragment, "fragment")
                 .addToBackStack(null)

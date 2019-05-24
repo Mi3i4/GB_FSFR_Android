@@ -58,7 +58,7 @@ public class PresenterChapterSelection {
 
         switch (id) {
             case 0:
-                FragmentRouter.getInstance().placeFragment(QuestionViewpagerFragment.class);
+                FragmentRouter.getInstance().placeFragment(QuestionViewpagerFragment.class, null);
                 break;
             default:
                 FragmentRouter.getInstance().notImplementedToast();

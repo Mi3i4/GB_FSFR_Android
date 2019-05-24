@@ -20,6 +20,10 @@ import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 import java.util.List;
 
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 public class QuestionViewpagerFragment extends Fragment implements IQuestionViewpager, QuestionViewpagerAdapter.Listener {
 
     private PresenterQuestionViewpager presenterQuestionViewpager;
@@ -63,7 +67,16 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
         if (++item < viewPager.getAdapter().getItemCount()) {
             viewPager.setCurrentItem(item, true);
         } else {
-            FragmentRouter.getInstance().placeFragment(TrainingTotals.class);
+            Single.fromCallable(() -> presenterQuestionViewpager.calcRightAnswersAmount())
+                    .observeOn(Schedulers.io())
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .subscribe(s -> {
+                        if (s != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString(getContext().getString(R.string.router_tag), s);
+                            FragmentRouter.getInstance().placeFragment(TrainingTotals.class, bundle);
+                        } else { FragmentRouter.getInstance().placeFragment(TrainingTotals.class, null); }
+            });
         }
     }
 }

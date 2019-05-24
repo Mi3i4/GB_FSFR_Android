@@ -11,12 +11,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TrainingTotals extends Fragment {
+
+    @BindView(R.id.totals_text) TextView textView;
 
     private TrainingTotalsViewModel viewModel;
 
@@ -27,7 +31,18 @@ public class TrainingTotals extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.training_totals_fragment, container, false);
+        View view = inflater.inflate(R.layout.training_totals_fragment, container, false);
+        ButterKnife.bind(this, view);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String str = bundle.getString(getContext().getString(R.string.router_tag));
+            if (str != null) {
+                textView.setText(str);
+            }
+        }
+
+        return view;
     }
 
     @Override
