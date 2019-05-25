@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 
+import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
@@ -107,10 +108,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         item.setChecked(true);
         if (id == R.id.learning) {
-            FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
+            FragmentRouter.getInstance().notImplementedToast();
 
         } else if (id == R.id.training) {
-            FragmentRouter.getInstance().notImplementedToast();
+            new MainMenuViewModel().startTraining();
 
         } else if (id == R.id.exam) {
             FragmentRouter.getInstance().notImplementedToast();
