@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuViewModel;
+import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
@@ -111,7 +112,8 @@ public class MainActivity extends AppCompatActivity
             FragmentRouter.getInstance().notImplementedToast();
 
         } else if (id == R.id.training) {
-            new MainMenuViewModel().startTraining();
+         //   new MainMenuViewModel().startTraining();
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class);
 
         } else if (id == R.id.exam) {
             FragmentRouter.getInstance().notImplementedToast();
