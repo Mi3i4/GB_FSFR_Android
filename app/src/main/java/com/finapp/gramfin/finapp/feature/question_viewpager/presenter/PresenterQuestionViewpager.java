@@ -1,12 +1,8 @@
 package com.finapp.gramfin.finapp.feature.question_viewpager.presenter;
 
-import android.view.View;
-
-import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.DataRecordRestModel;
 import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 import com.finapp.gramfin.finapp.service.QuestionLoader;
 
 import java.util.ArrayList;
@@ -14,7 +10,6 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.Nullable;
-import androidx.viewpager2.widget.ViewPager2;
 
 public class PresenterQuestionViewpager {
     private static final int QUESTIONS_AMOUNT = 221;
@@ -37,7 +32,11 @@ public class PresenterQuestionViewpager {
                     public void onComplete(@Nullable DataRecordRestModel result, String error) {
                         if (result != null) {
                             ModelQuestion model = new ModelQuestion(chapter_id, result.id, result.content, result.answers);
+                            model.setChapterName(result.chapters.name);
+                            if (result.topics != null) { model.setTopicName(result.topics.name); }
+
                             questionList.add(model);
+
                         } else if (!error.equals(QuestionLoader.QUESTION_NOT_FOUND)) {
                             ModelQuestion model = new ModelQuestion(chapter_id, -1, error, new ArrayList<AnswerRecordRestModel>());
                             questionList.add(model);
@@ -54,20 +53,10 @@ public class PresenterQuestionViewpager {
 
     private void setAnswer(ModelQuestion modelQuestion, int choice) {
         modelQuestion.setUserChoice(choice);
-
-        ArrayList<AnswerRecordRestModel> answers = modelQuestion.getAnswers();
-        AnswerRecordRestModel answer = answers.get(choice);
-
-        if (answer.is_correct == 1) {
-            iQuestionViewpager.setGreenolor(choice);
-        } else {
-            iQuestionViewpager.setRedColor(choice);
-        }
-
         iQuestionViewpager.gotoNextPage();
     }
 
-    public void callBack(int choice, int id) {
+    public void callBack(int id, int choice) {
         ModelQuestion modelQuestion = questionList.get(id);
         setAnswer(modelQuestion, choice);
     }

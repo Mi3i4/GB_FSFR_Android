@@ -2,13 +2,11 @@ package com.finapp.gramfin.finapp.feature.question_viewpager;
 
 import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 
-import java.util.Arrays;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +40,6 @@ public class QuestionViewpagerAdapter extends RecyclerView.Adapter<QuestionViewp
     }
 
     public interface Listener {
-        void onFeedClick(int choice, int id, TextView textChoice);
+        void onFeedClick(int id, int choice);
     }
 }

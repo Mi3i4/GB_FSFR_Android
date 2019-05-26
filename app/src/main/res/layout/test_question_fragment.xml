@@ -1,137 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/currentChapter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="21dp"
-        android:text="@string/current_chapter"
-        android:textSize="10sp" />
 
     <TextView
-        android:id="@+id/currentTopic"
+        android:id="@+id/title_number_of_chapter"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/circle_text"
+        android:gravity="center"
+        android:text="titleNumberOfChapter"
+        android:textColor="@color/colorWhite" />
+
+
+    <TextView
+        android:id="@+id/title_chapter_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="10dp"
+        android:text="titleNameChapter"
+        android:textColor="@color/colorBlackText"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/title_topic_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/currentChapter"
-        android:paddingLeft="21dp"
-        android:text="@string/current_topic"
-        android:textSize="10sp" />
-    <ImageButton
-        android:id="@+id/checkbox_flag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:background="@color/colorWhite"
-        android:src="@drawable/ic_turned_in_gray_24dp" />
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="36dp"
+        android:lines="1"
+        android:text="titleNumberOfQuestions"
+        android:textColor="@color/colorTextNumberOfQuestions"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_above="@id/button_skip"
+        android:layout_below="@id/title_number_of_chapter"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:paddingTop="21dp">
 
-        <TextView
-            android:id="@+id/text_question"
+
+        <ScrollView
+
+            android:id="@+id/scrollView_question"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="@string/text_current_question"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/answer_choice_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorLightGray"
-            android:elevation="8dp"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="10dp"
-            android:text="@string/answer_choice_1"
-            android:textAlignment="viewStart" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/answer_choice_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorLightGray"
-            android:elevation="8dp"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:text="@string/answer_choice_2"
-            android:textAlignment="viewStart" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAqua"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/answer_choice_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorLightGray"
-            android:elevation="8dp"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:text="@string/answer_choice_3"
-            android:textAlignment="viewStart" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="12dp"
+                        android:src="@drawable/ic_star_15dp" />
 
-        <TextView
-            android:id="@+id/answer_choice_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorLightGray"
-            android:elevation="8dp"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:text="@string/answer_choice_4"
-            android:textAlignment="viewStart" />
+                    <TextView
+                        android:id="@+id/text_question"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="9dp"
+                        android:paddingTop="8dp"
+                        android:paddingRight="9dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="16sp"
+                        tools:text="@string/text_current_question" />
+                </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/findError"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:paddingTop="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="2dp"
-            android:text="@string/findError"
-            android:textColor="@color/colorLightRed"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp">
 
-            />
+                    <TextView
+                        android:id="@+id/answer_choice_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        tools:text="@string/answer_choice_1" />
 
-        <TextView
-            android:id="@+id/questionNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:paddingEnd="16dp"
-            android:text="вопрос 1.1" />
+                    <CheckBox
+                        android:id="@+id/answer_checkbox_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:theme="@style/CheckboxStyle" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:id="@+id/answer_choice_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        tools:text="@string/answer_choice_2" />
+
+                    <CheckBox
+                        android:id="@+id/answer_checkbox_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+
+                        android:theme="@style/CheckboxStyle" />
+
+                </androidx.cardview.widget.CardView>
 
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:id="@+id/answer_choice_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        tools:text="@string/answer_choice_3" />
+
+                    <CheckBox
+                        android:id="@+id/answer_checkbox_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:theme="@style/CheckboxStyle" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_answer_choice_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/element_background_answer_cardview"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:id="@+id/answer_choice_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="54dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:text="@string/answer_choice_4" />
+
+                    <CheckBox
+                        android:id="@+id/answer_checkbox_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:theme="@style/CheckboxStyle" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/view_comments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/button_expand_more"
-        android:layout_centerHorizontal="true"
-        android:text="@string/comments"
-        android:textAlignment="center"
-        android:textSize="20sp" />
 
-    <ImageButton
-        android:id="@+id/button_expand_more"
+    <Button
+        android:id="@+id/button_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/colorWhite"
-        android:src="@drawable/ic_expand_more_black_24dp" />
-
-    />
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/element_background_button_skip"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingTop="12dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="12dp"
+        android:text="@string/button_skip_text"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
 
 
 </RelativeLayout>

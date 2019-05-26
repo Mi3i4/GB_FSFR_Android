@@ -19,12 +19,16 @@
 
     <string name="headline_second_screen">Выберите главу для тренировки:</string>
     <string name="search">Search</string>
-    <string name="first_screen_name">Тренажер ФСФР</string>
-    <string name="btn_start_learning_text">Изучение</string>
-    <string name="btn_start_training_text">Тренировка</string>
-    <string name="btn_start_exam_text">Экзамен</string>
+    <string name="main_menu_title">ФИНУМ</string>
+    <string name="training_title">ТРЕНИРОВКА</string>
+    <string name="btn_start_learning_text">ИЗУЧЕНИЕ</string>
+    <string name="btn_start_training_text">ТРЕНИРОВКА</string>
+    <string name="btn_start_exam_text">ЭКЗАМЕН</string>
+    <string name="btn_statistic_text">СТАТИСТИКА</string>
+    <string name="btn_favorites_text">ИЗБРАННОЕ</string>
     <string name="home_link_test">На начальный экран</string>
     <string name="under_construction">Функционал еще не готов...</string>
+
     <string name="name_title">Григорий Мельник</string>
     <string name="learning">Изучение</string>
     <string name="training">Тренировка</string>
@@ -35,5 +39,8 @@
     <string name="add_friends">Пригласить друзей</string>
     <string name="write_us">Напишите нам</string>
     <string name="exit">Выход</string>
+
+    <string name="button_skip_text">ПРОПУСТИТЬ</string>
+
 
 </resources>
