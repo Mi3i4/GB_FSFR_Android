@@ -13,12 +13,13 @@ import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
 import com.finapp.gramfin.finapp.feature.second_screen.presenter.IFragmentChooseChapter;
 import com.finapp.gramfin.finapp.feature.second_screen.presenter.PresenterChapterSelection;
+import com.finapp.gramfin.finapp.feature.second_screen.presenter.PresenterChapterSelectionAllQuestions;
 
 import java.util.List;
 
 public class FragmentChapterSelictionAllQuestions extends Fragment implements IFragmentChooseChapter, ChapterSelectionAdapter.Listener {
 
-    PresenterChapterSelection presenterSecondScreen;
+    PresenterChapterSelectionAllQuestions presenterSecondScreen;
 
     private RecyclerView recViewChapters;
 
@@ -33,7 +34,7 @@ public class FragmentChapterSelictionAllQuestions extends Fragment implements IF
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
-        presenterSecondScreen = new PresenterChapterSelection(this);
+        presenterSecondScreen = new PresenterChapterSelectionAllQuestions (this);
     }
 
     private void initViews(View view) {
