@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuViewModel;
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
+import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSelictionAllQuestions;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
@@ -109,8 +110,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         item.setChecked(true);
         if (id == R.id.learning) {
-            FragmentRouter.getInstance().notImplementedToast();
 
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSelictionAllQuestions.class);
         } else if (id == R.id.training) {
          //   new MainMenuViewModel().startTraining();
             FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class);
