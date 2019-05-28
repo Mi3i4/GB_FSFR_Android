@@ -40,7 +40,7 @@ public class FragmentRouter {
     public void placeFragment(@NonNull Class<?> cls) {
         Fragment fragment = Fragment.instantiate(context, cls.getName(),null);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_fragments, fragment, "fragment")
+                .replace(R.id.drawer_layout, fragment, "fragment")
                 .addToBackStack(null)
                 .commit();
     }
