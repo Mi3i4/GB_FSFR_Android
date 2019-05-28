@@ -1,21 +1,14 @@
 package com.finapp.gramfin.finapp;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
-
-import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuViewModel;
-import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
-import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSelictionAllQuestions;
 import com.google.android.material.navigation.NavigationView;
-
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -33,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        initDrawerMenu(toolbar);
+        initDrawlerMenu(toolbar);
 
 
         FragmentRouter.getInstance().setContext(this, getSupportFragmentManager());
@@ -41,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void initDrawerMenu(Toolbar toolbar) {
+    private void initDrawlerMenu(Toolbar toolbar){
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -106,31 +99,25 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected( MenuItem item) {
         int id = item.getItemId();
-        item.setChecked(true);
-        if (id == R.id.learning) {
 
-            FragmentRouter.getInstance().placeFragment(FragmentChapterSelictionAllQuestions.class);
-        } else if (id == R.id.training) {
-         //   new MainMenuViewModel().startTraining();
-            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class);
+        if (id == R.id.nav_home) {
+            FragmentRouter.getInstance().placeFragment(MainMenuFragment.class);
 
-        } else if (id == R.id.exam) {
-            FragmentRouter.getInstance().notImplementedToast();
-        } else if (id == R.id.statistics) {
-            FragmentRouter.getInstance().notImplementedToast();
-        } else if (id == R.id.bookmark) {
-            FragmentRouter.getInstance().notImplementedToast();
-        } else if (id == R.id.settings) {
-            FragmentRouter.getInstance().notImplementedToast();
-        } else if (id == R.id.add_friends) {
-            FragmentRouter.getInstance().notImplementedToast();
-        } else if (id == R.id.write_us) {
-            FragmentRouter.getInstance().notImplementedToast();
-        } else if (id == R.id.exit) {
-            FragmentRouter.getInstance().notImplementedToast();
+        } else if (id == R.id.nav_gallery) {
+
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
         }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
