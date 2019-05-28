@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="@string/home_link_test"
-            app:showAsAction="always" />
+            android:id="@+id/learning"
+            android:icon="@drawable/learning_selected"
+            android:title="@string/learning" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/training"
+            android:icon="@drawable/training"
+            android:title="@string/training" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/exam"
+            android:icon="@drawable/exam"
+            android:title="@string/exam"
+
+            />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/statistics"
+            android:icon="@drawable/statistics"
+            android:title="@string/statistics" />
+
+        <item
+            android:id="@+id/bookmark"
+            android:icon="@drawable/bookmark"
+            android:title="@string/bookmark" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/add_friends"
+            android:icon="@drawable/add_friends"
+            android:title="@string/add_friends" />
+
+        <item
+            android:id="@+id/write_us"
+            android:icon="@drawable/write_us"
+            android:title="@string/write_us" />
+        <item
+            android:id="@+id/exit"
+            android:icon="@drawable/exit"
+            android:title="@string/exit" />
+
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
 
 </menu>
