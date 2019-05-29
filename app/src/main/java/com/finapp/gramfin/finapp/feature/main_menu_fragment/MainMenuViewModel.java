@@ -30,7 +30,7 @@ public class MainMenuViewModel extends ViewModel {
         listMainMenu.add(new ModelMainMenuItem(R.drawable.main_menu_strong, R.string.btn_start_training_text, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class);
+                FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, null);
             }
         }));
 

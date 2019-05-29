@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">google@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -28,6 +28,22 @@
     <string name="btn_favorites_text">ИЗБРАННОЕ</string>
     <string name="home_link_test">На начальный экран</string>
     <string name="under_construction">Функционал еще не готов...</string>
+    <string name="name_title">Григорий Мельник</string>
+    <string name="learning">Изучение</string>
+    <string name="training">Тренировка</string>
+    <string name="exam">Экзамен</string>
+    <string name="statistics">Статистика</string>
+    <string name="bookmark">Избранное</string>
+    <string name="settings">Настройки</string>
+    <string name="add_friends">Пригласить друзей</string>
+    <string name="write_us">Напишите нам</string>
+    <string name="exit">Выход</string>
     <string name="button_skip_text">ПРОПУСТИТЬ</string>
+    <string name="totals_btn_repeat_text">ПОВТОРИТЬ</string>
+    <string name="totals_btn_home_text">НА ГЛАВНУЮ</string>
+    <string name="totals_text_congratulation">Поздравляем,\nтренировка окончена!</string>
+    <string name="totals_text_result">Ваш результат:</string>
+    <string name="totals_text">9 / 10</string>
+    <string name="router_tag">RouterTag</string>
 
 </resources>

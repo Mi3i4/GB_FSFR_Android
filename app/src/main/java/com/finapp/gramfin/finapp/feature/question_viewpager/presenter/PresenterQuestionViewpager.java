@@ -25,6 +25,14 @@ public class PresenterQuestionViewpager {
         addModelQuestions();
     }
 
+    public String calcRightAnswersAmount() {
+        int result = 0;
+
+        for (ModelQuestion model:questionList) { if (model.getHaveRightChoice()) result ++; }
+
+        return String.valueOf(new StringBuilder().append(result).append(" / ").append(QUESTIONS_NEEDED));
+    }
+
     private void addModelQuestions() {
         QuestionLoader.getInstance()
                 .getDataRecord(chapter_id, random.nextInt(QUESTIONS_AMOUNT), new QuestionLoader.OnRequestListener() {
