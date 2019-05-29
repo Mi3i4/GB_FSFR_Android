@@ -8,12 +8,11 @@
         android:id="@+id/totals_confetti"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="98dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/confetti"
+        app:layout_constraintBottom_toTopOf="@+id/totals_congratulation_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,12 +20,13 @@
         android:id="@+id/totals_congratulation_text"
         android:layout_width="340dp"
         android:layout_height="52dp"
-        android:layout_marginTop="30dp"
         android:text="@string/totals_text_congratulation"
         android:textAlignment="center"
         android:textColor="@color/colorBlackText"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/totals_result_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totals_confetti" />
 
@@ -34,12 +34,13 @@
         android:id="@+id/totals_result_text"
         android:layout_width="340dp"
         android:layout_height="24dp"
-        android:layout_marginTop="56dp"
         android:text="@string/totals_text_result"
         android:textAlignment="center"
         android:textColor="@color/colorBlackText"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/totals_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totals_congratulation_text" />
 
@@ -47,12 +48,13 @@
         android:id="@+id/totals_text"
         android:layout_width="340dp"
         android:layout_height="24dp"
-        android:layout_marginTop="20dp"
         android:text="@string/totals_text"
         android:textAlignment="center"
         android:textColor="@color/colorBlackText"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/totals_button_repeat"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totals_result_text" />
 
@@ -60,13 +62,14 @@
         android:id="@+id/totals_button_repeat"
         android:layout_width="124dp"
         android:layout_height="40dp"
-        android:layout_marginTop="56dp"
         android:background="@drawable/element_background_button_skip"
         android:gravity="center"
         android:text="@string/totals_btn_repeat_text"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/totals_button_home"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totals_text" />
 
@@ -74,13 +77,14 @@
         android:id="@+id/totals_button_home"
         android:layout_width="124dp"
         android:layout_height="40dp"
-        android:layout_marginTop="40dp"
         android:background="@drawable/element_background_button_skip"
         android:gravity="center"
         android:text="@string/totals_btn_home_text"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totals_button_repeat" />
 
