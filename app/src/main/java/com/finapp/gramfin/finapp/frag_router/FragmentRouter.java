@@ -45,7 +45,7 @@ public class FragmentRouter {
         if (bundle != null) fragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_fragments, fragment, "fragment")
+                .replace(R.id.drawer_layout, fragment, "fragment")
                 .addToBackStack(null)
                 .commit();
     }
