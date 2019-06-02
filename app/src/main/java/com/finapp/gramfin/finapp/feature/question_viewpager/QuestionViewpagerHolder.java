@@ -50,37 +50,28 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
 
         for (final CardView view:listChoicesCard) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        listener.onFeedClick(id, listChoicesCard.indexOf(view));
-                        initViews(modelQuestion);
-                    }
+            view.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onFeedClick(id, listChoicesCard.indexOf(view));
+                    initViews(modelQuestion);
                 }
             });
             view.setVisibility(View.GONE);
         }
 
         for (final CheckBox view:listChoicesCheckboxes) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        listener.onFeedClick(id, listChoicesCheckboxes.indexOf(view));
-                        initViews(modelQuestion);
-                    }
+            view.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onFeedClick(id, listChoicesCheckboxes.indexOf(view));
+                    initViews(modelQuestion);
                 }
             });
             view.setVisibility(View.GONE);
         }
 
-        buttonSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //gotoNextPage()
-                FragmentRouter.getInstance().notImplementedToast();
-            }
+        buttonSkip.setOnClickListener(v -> {
+            //gotoNextPage()
+            FragmentRouter.getInstance().notImplementedToast();
         });
 
     }
