@@ -35,6 +35,10 @@ public class FragmentRouter {
         this.fragmentManager = fragmentManager;
     }
 
+    public String getString(int id) {
+        return context.getString(id);
+    }
+
     public void notImplementedToast() {
         Toast.makeText(context, context.getString(R.string.under_construction), Toast.LENGTH_SHORT).show();
     }

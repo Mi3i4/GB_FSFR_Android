@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.lifecycle.ViewModel;
 
 import com.finapp.gramfin.finapp.R;
+import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.model.ModelMainMenuItem;
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
 import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
@@ -53,8 +54,7 @@ public class MainMenuViewModel extends ViewModel {
         listMainMenu.add(new ModelMainMenuItem(R.drawable.main_menu_bookmark, R.string.btn_favorites_text, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implement кнопка "Избранное" нажата
-                FragmentRouter.getInstance().notImplementedToast();
+                FragmentRouter.getInstance().placeFragment(FavouritesFragment.class, null);
             }
         }));
     }

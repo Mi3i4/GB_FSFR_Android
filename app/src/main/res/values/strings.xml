@@ -21,11 +21,13 @@
     <string name="search">Search</string>
     <string name="main_menu_title">ФИНУМ</string>
     <string name="training_title">ТРЕНИРОВКА</string>
+    <string name="favourites_title">ИЗБРАННОЕ</string>
     <string name="btn_start_learning_text">ИЗУЧЕНИЕ</string>
     <string name="btn_start_training_text">ТРЕНИРОВКА</string>
     <string name="btn_start_exam_text">ЭКЗАМЕН</string>
     <string name="btn_statistic_text">СТАТИСТИКА</string>
     <string name="btn_favorites_text">ИЗБРАННОЕ</string>
+
     <string name="home_link_test">На начальный экран</string>
     <string name="under_construction">Функционал еще не готов...</string>
     <string name="name_title">Григорий Мельник</string>
@@ -39,11 +41,14 @@
     <string name="write_us">Напишите нам</string>
     <string name="exit">Выход</string>
     <string name="button_skip_text">ПРОПУСТИТЬ</string>
+
     <string name="totals_btn_repeat_text">ПОВТОРИТЬ</string>
     <string name="totals_btn_home_text">НА ГЛАВНУЮ</string>
     <string name="totals_text_congratulation">Поздравляем,\nтренировка окончена!</string>
     <string name="totals_text_result">Ваш результат:</string>
     <string name="totals_text">9 / 10</string>
     <string name="router_tag">RouterTag</string>
+    <string name="favourites_question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
+    <string name="favourites_chapter_holder">Рынок ценных бумаг.</string>
 
 </resources>
