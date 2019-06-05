@@ -22,7 +22,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="54dp"
         android:layout_toEndOf="@id/favourites_star"
-        android:text="@string/favourites_chapter_holder"
+        android:text="@string/chapter_holder"
         android:textSize="16sp"
         android:textColor="@color/colorFavouritesBlack">
     </TextView>
@@ -36,7 +36,7 @@
         android:layout_marginEnd="54dp"
         android:layout_alignStart="@id/favourites_chapter_text"
         android:layout_below="@+id/favourites_chapter_text"
-        android:text="@string/favourites_question_holder"
+        android:text="@string/question_holder"
         android:textSize="14sp"
         android:textColor="@color/colorFavouritesTintBlack">
     </TextView>

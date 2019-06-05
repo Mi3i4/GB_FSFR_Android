@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -52,25 +51,25 @@ public class FavouritesFragment extends Fragment {
     private class FavouritesAdapter extends ArrayAdapter<FavouritesModel> {
 
         public FavouritesAdapter(@NonNull Context context) {
-            super(context, R.layout.favourites_item, viewModel.getListFavourites());
+            super(context, R.layout.favourites_item, viewModel.getFavouritesModelArrayList());
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            final FavouritesModel favouritesItem = getItem(position);
+            final FavouritesModel item = getItem(position);
 
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext())
                         .inflate(R.layout.favourites_item, null);
             }
             ((TextView) convertView.findViewById(R.id.favourites_chapter_text))
-                    .setText(favouritesItem.getChapterText());
+                    .setText(item.getChapterText());
             ((TextView) convertView.findViewById(R.id.favourites_question_text))
-                    .setText(favouritesItem.getQuestionText());
+                    .setText(item.getQuestionText());
             ((ImageView) convertView.findViewById(R.id.favourites_bin))
-                    .setImageResource(favouritesItem.getBin_image());
+                    .setImageResource(item.getBin_image());
 
-            convertView.setOnClickListener(favouritesItem.getListener());
+            convertView.setOnClickListener(item.getListener());
 
             return convertView;
         }

@@ -23,4 +23,8 @@
     <color name="colorFavouritesTintBlack">#8A000000</color>
     <color name="colorFavouritesBlack">#DE000000</color>
 
+    <color name="colorWrongAnswerBack">#1AF44336</color>
+    <color name="colorWrongAnswerTintBlack">#8A000000</color>
+    <color name="colorWrongAnswerBlack">#DE000000</color>
+
 </resources>

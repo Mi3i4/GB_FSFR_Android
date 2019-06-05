@@ -11,20 +11,20 @@ import java.util.List;
 
 public class FavouritesViewModel extends ViewModel {
 
-    private List<FavouritesModel> listFavourites = new ArrayList<>();
+    private List<FavouritesModel> favouritesModelArrayList = new ArrayList<>();
 
     public void setupModel() {
-        if (listFavourites.size() > 0) { return; }
+        if (favouritesModelArrayList.size() > 0) { return; }
 
         //TODO implement list of favorites
         for (int i = 0; i < 4; i++) {
-            listFavourites.add(new FavouritesModel(
-                    FragmentRouter.getInstance().getString(R.string.favourites_chapter_holder),
-                    FragmentRouter.getInstance().getString(R.string.favourites_question_holder),
+            favouritesModelArrayList.add(new FavouritesModel(
+                    FragmentRouter.getInstance().getString(R.string.chapter_holder),
+                    FragmentRouter.getInstance().getString(R.string.question_holder),
                     v ->  FragmentRouter.getInstance().notImplementedToast()
             ));
         }
     }
 
-    public List<FavouritesModel> getListFavourites() { return listFavourites; }
+    public List<FavouritesModel> getFavouritesModelArrayList() { return favouritesModelArrayList; }
 }

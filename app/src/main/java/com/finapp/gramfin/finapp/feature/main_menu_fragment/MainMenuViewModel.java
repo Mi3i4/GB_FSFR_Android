@@ -8,6 +8,7 @@ import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.model.ModelMainMenuItem;
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
+import com.finapp.gramfin.finapp.feature.statistics.wrong_answers.WrongAnswersFragment;
 import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class MainMenuViewModel extends ViewModel {
             @Override
             public void onClick(View v) {
                 // TODO: Implement кнопка "Статистика" нажата
-                FragmentRouter.getInstance().notImplementedToast();
+                FragmentRouter.getInstance().placeFragment(WrongAnswersFragment.class, null);
             }
         }));
 

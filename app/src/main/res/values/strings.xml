@@ -22,6 +22,8 @@
     <string name="main_menu_title">ФИНУМ</string>
     <string name="training_title">ТРЕНИРОВКА</string>
     <string name="favourites_title">ИЗБРАННОЕ</string>
+    <string name="wrong_answers_title">НЕ ЗНАЮ</string>
+
     <string name="btn_start_learning_text">ИЗУЧЕНИЕ</string>
     <string name="btn_start_training_text">ТРЕНИРОВКА</string>
     <string name="btn_start_exam_text">ЭКЗАМЕН</string>
@@ -48,7 +50,8 @@
     <string name="totals_text_result">Ваш результат:</string>
     <string name="totals_text">9 / 10</string>
     <string name="router_tag">RouterTag</string>
-    <string name="favourites_question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
-    <string name="favourites_chapter_holder">Рынок ценных бумаг.</string>
+
+    <string name="question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
+    <string name="chapter_holder">Рынок ценных бумаг.</string>
 
 </resources>
