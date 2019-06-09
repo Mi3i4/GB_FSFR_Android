@@ -49,7 +49,7 @@
     <string name="totals_text_congratulation">Поздравляем,\nтренировка окончена!</string>
     <string name="totals_text_result">Ваш результат:</string>
     <string name="totals_text">9 / 10</string>
-    <string name="router_tag">RouterTag</string>
+    <string name="router_tag">router_tag</string>
 
     <string name="question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
     <string name="chapter_holder">Рынок ценных бумаг.</string>
