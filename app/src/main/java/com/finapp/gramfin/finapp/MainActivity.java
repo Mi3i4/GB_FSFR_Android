@@ -107,11 +107,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Bundle bundle = new Bundle();
         item.setChecked(true);
+
         if (id == R.id.learning) {
-            FragmentRouter.getInstance().notImplementedToast();
+            bundle.putString(getString(R.string.title_tag),"ИЗУЧЕНИЕ");
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
+
         } else if (id == R.id.training) {
-            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, null);
+            bundle.putString(getString(R.string.title_tag),"ТРЕНИРОВКА");
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
+
         } else if (id == R.id.exam) {
             FragmentRouter.getInstance().notImplementedToast();
         } else if (id == R.id.statistics) {

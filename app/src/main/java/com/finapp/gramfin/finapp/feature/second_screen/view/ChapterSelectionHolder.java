@@ -31,12 +31,9 @@ class ChapterSelectionHolder extends RecyclerView.ViewHolder {
 
         ButterKnife.bind(this, itemView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onFeedClick(id);
-                }
+        itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFeedClick(id);
             }
         });
 
