@@ -18,4 +18,13 @@
     <color name="colorTextIdontKnow">#EB5757</color>
     <color name="colorBlackText">#000000</color>
 
+    <color name="colorFavouritesGrey">#4DE5E5E5</color>
+    <color name="colorFavouritesGreen">#1F5BC0AA</color>
+    <color name="colorFavouritesTintBlack">#8A000000</color>
+    <color name="colorFavouritesBlack">#DE000000</color>
+
+    <color name="colorWrongAnswerBack">#1AF44336</color>
+    <color name="colorWrongAnswerTintBlack">#8A000000</color>
+    <color name="colorWrongAnswerBlack">#DE000000</color>
+
 </resources>
