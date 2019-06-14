@@ -3,6 +3,7 @@ package com.finapp.gramfin.finapp.feature.settings;
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -62,11 +63,12 @@ public class SettingsFragment extends Fragment {
     }
 
     @OnClick(R.id.settings_btn_save)
-    public void onClick(View v) {
+    void onClick(View v) {
         viewModel.saveSettings(tvFullName.getText().toString(), tvEmail.getText().toString(), tvPassword.getText().toString());
     }
 
-    public AlertDialog createAlertDialog() {
+    @Nullable
+    private AlertDialog createAlertDialog() {
         DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
@@ -79,11 +81,14 @@ public class SettingsFragment extends Fragment {
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        return builder.setTitle("Сбросить статистику?")
-                .setMessage("Данное действие приведет к удалению всех данных статистики.")
-                .setPositiveButton("Да", dialogClickListener)
-                .setNegativeButton("Нет", dialogClickListener)
-                .create();
+        Context context = getContext();
+        if (context != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            return builder.setTitle(getString(R.string.reset_statistics_title))
+                    .setMessage(getString(R.string.reset_statistics_text))
+                    .setPositiveButton(getString(R.string.text_yes), dialogClickListener)
+                    .setNegativeButton(getString(R.string.text_no), dialogClickListener)
+                    .create();
+        } else return null;
     }
 }
