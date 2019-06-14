@@ -83,11 +83,14 @@ public class SettingsFragment extends Fragment {
 
         Context context = getContext();
         if (context != null) {
+            LayoutInflater inflater = getLayoutInflater();
+
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            return builder.setTitle(getString(R.string.reset_statistics_title))
-                    .setMessage(getString(R.string.reset_statistics_text))
-                    .setPositiveButton(getString(R.string.text_yes), dialogClickListener)
-                    .setNegativeButton(getString(R.string.text_no), dialogClickListener)
+            return builder.setView(inflater.inflate(R.layout.settings_alert, null))
+//                    .setTitle(getString(R.string.settings_alert_title))
+//                    .setMessage(getString(R.string.settings_alert_text))
+//                    .setPositiveButton(getString(R.string.text_yes), dialogClickListener)
+//                    .setNegativeButton(getString(R.string.text_no), dialogClickListener)
                     .create();
         } else return null;
     }

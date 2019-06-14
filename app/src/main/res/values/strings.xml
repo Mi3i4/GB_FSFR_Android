@@ -64,8 +64,8 @@
 
     <string name="settings_reset_text">Сбросить статистику</string>
     <string name="btn_save_settings_text">СОХРАНИТЬ</string>
-    <string name="reset_statistics_title">Сбросить статистику?</string>
-    <string name="reset_statistics_text">Данное действие приведет к удалению всех данных статистики.</string>
+    <string name="settings_alert_title">Сбросить статистику?</string>
+    <string name="settings_alert_text">Данное действие приведет к удалению всех данных статистики.</string>
     <string name="text_yes">Да</string>
     <string name="text_no">Нет</string>
 

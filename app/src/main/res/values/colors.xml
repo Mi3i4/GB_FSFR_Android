@@ -27,6 +27,8 @@
     <color name="colorWrongAnswerTintBlack">#8A000000</color>
     <color name="colorWrongAnswerBlack">#DE000000</color>
 
-    <color name="colorSettingsLightText">#33000000</color>
+    <color name="colorSettingsCommonText">#8A000000</color>
+    <color name="colorSettingsButtonText">#757575</color>
+    <color name="colorSettingsButtonFill">#E5E5E5</color>
 
 </resources>
