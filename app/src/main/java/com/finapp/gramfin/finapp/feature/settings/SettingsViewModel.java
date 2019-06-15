@@ -39,11 +39,13 @@ class SettingsViewModel extends ViewModel {
 
     void resetStatistics() {
         //TODO implement resetStatistics action
+        if (alertDialog != null) { alertDialog.dismiss(); }
         FragmentRouter.getInstance().notImplementedToast();
     }
 
     void cancelResetStatistics() {
         //TODO implement cancel resetStatistics action
+        if (alertDialog != null) { alertDialog.cancel(); }
         FragmentRouter.getInstance().notImplementedToast();
     }
 }

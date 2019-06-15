@@ -30,5 +30,6 @@
     <color name="colorSettingsCommonText">#8A000000</color>
     <color name="colorSettingsButtonText">#757575</color>
     <color name="colorSettingsButtonFill">#E5E5E5</color>
+    <color name="colorSettingsAlertDimming">#8049939A</color>
 
 </resources>

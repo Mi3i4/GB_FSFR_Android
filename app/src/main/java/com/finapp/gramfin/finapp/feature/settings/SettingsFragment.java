@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -46,14 +47,15 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.settings_fragment, container, false);
         ButterKnife.bind(this, view);
 
+        viewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
+        viewModel.setupModel(createAlertDialog(container));
+
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
-        viewModel.setupModel(createAlertDialog());
 
         resetSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> viewModel.setResetState(isChecked));
 
@@ -68,29 +70,16 @@ public class SettingsFragment extends Fragment {
     }
 
     @Nullable
-    private AlertDialog createAlertDialog() {
-        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-            switch (which){
-                case DialogInterface.BUTTON_POSITIVE:
-                    viewModel.resetStatistics();
-                    break;
-
-                case DialogInterface.BUTTON_NEGATIVE:
-                    viewModel.cancelResetStatistics();
-                    break;
-            }
-        };
-
+    private AlertDialog createAlertDialog(ViewGroup container) {
         Context context = getContext();
         if (context != null) {
             LayoutInflater inflater = getLayoutInflater();
+            View view = inflater.inflate(R.layout.settings_alert, container, false);
+            view.findViewById(R.id.settings_alert_positive_answer).setOnClickListener(v -> viewModel.resetStatistics());
+            view.findViewById(R.id.settings_alert_negative_answer).setOnClickListener(v -> viewModel.cancelResetStatistics());
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            return builder.setView(inflater.inflate(R.layout.settings_alert, null))
-//                    .setTitle(getString(R.string.settings_alert_title))
-//                    .setMessage(getString(R.string.settings_alert_text))
-//                    .setPositiveButton(getString(R.string.text_yes), dialogClickListener)
-//                    .setNegativeButton(getString(R.string.text_no), dialogClickListener)
+            AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.SettingsAlertDialogTheme);
+            return builder.setView(view)
                     .create();
         } else return null;
     }
