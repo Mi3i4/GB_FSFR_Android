@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
+import com.finapp.gramfin.finapp.feature.settings.SettingsFragment;
 import com.finapp.gramfin.finapp.feature.statistics.wrong_answers.WrongAnswersFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.bookmark) {
             FragmentRouter.getInstance().placeFragment(FavouritesFragment.class, null);
         } else if (id == R.id.settings) {
-            FragmentRouter.getInstance().notImplementedToast();
+            FragmentRouter.getInstance().placeFragment(SettingsFragment.class, null);
         } else if (id == R.id.add_friends) {
             FragmentRouter.getInstance().notImplementedToast();
         } else if (id == R.id.write_us) {
