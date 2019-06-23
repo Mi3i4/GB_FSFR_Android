@@ -34,10 +34,21 @@ public class FragmentChapterSeliction extends Fragment implements IFragmentChoos
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         presenterSecondScreen = new PresenterChapterSelection(this);
+
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+
+                getActivity().setTitle(bundle.getString(getContext().getString(R.string.title_tag)));
+            }
+
     }
 
+
+
+
     private void initViews(View view) {
-        getActivity().setTitle("ТРЕНИРОВКА");
+
         recViewChapters = view.findViewById(R.id.recViewChapter);
     }
 

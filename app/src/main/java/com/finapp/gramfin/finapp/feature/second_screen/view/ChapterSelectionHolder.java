@@ -31,18 +31,9 @@ class ChapterSelectionHolder extends RecyclerView.ViewHolder {
 
         ButterKnife.bind(this, itemView);
 
-        numberOfChapter = itemView.findViewById(R.id.number_of_chapter);
-        nameChapter = itemView.findViewById(R.id.chapter_name);
-        numberOfQuetions = itemView.findViewById(R.id.title_topic_name);
-        textIknow = itemView.findViewById(R.id.i_know);
-        textIdontKnow = itemView.findViewById(R.id.i_dont_know);
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onFeedClick(id);
-                }
+        itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFeedClick(id);
             }
         });
 

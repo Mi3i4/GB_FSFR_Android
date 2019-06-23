@@ -2,11 +2,12 @@ package com.finapp.gramfin.finapp;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 
-import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuViewModel;
+import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
+import com.finapp.gramfin.finapp.feature.settings.SettingsFragment;
+import com.finapp.gramfin.finapp.feature.statistics.wrong_answers.WrongAnswersFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
@@ -107,21 +108,25 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Bundle bundle = new Bundle();
         item.setChecked(true);
+
         if (id == R.id.learning) {
-            FragmentRouter.getInstance().notImplementedToast();
+            bundle.putString(getString(R.string.title_tag),"ИЗУЧЕНИЕ");
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
 
         } else if (id == R.id.training) {
-            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, null);
+            bundle.putString(getString(R.string.title_tag),"ТРЕНИРОВКА");
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
 
         } else if (id == R.id.exam) {
             FragmentRouter.getInstance().notImplementedToast();
         } else if (id == R.id.statistics) {
-            FragmentRouter.getInstance().notImplementedToast();
+            FragmentRouter.getInstance().placeFragment(WrongAnswersFragment.class, null);
         } else if (id == R.id.bookmark) {
-            FragmentRouter.getInstance().notImplementedToast();
+            FragmentRouter.getInstance().placeFragment(FavouritesFragment.class, null);
         } else if (id == R.id.settings) {
-            FragmentRouter.getInstance().notImplementedToast();
+            FragmentRouter.getInstance().placeFragment(SettingsFragment.class, null);
         } else if (id == R.id.add_friends) {
             FragmentRouter.getInstance().notImplementedToast();
         } else if (id == R.id.write_us) {

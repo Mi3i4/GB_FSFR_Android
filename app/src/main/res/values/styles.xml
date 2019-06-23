@@ -12,11 +12,20 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="CheckboxStyle" parent="AppTheme">
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
+    <style name="FavouritesItem" parent="AppTheme">
+        <item name="android:activatedBackgroundIndicator">@drawable/favourites_item_background</item>
+    </style>
+
+    <style name="SettingsAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--<item name="android:windowBackground">@color/colorSettingsAlertDimming</item>-->
+        <!--<item name="android:backgroundDimEnabled">false</item>-->
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
