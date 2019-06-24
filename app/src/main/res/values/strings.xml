@@ -55,4 +55,6 @@
     <string name="question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
     <string name="chapter_holder">Рынок ценных бумаг.</string>
 
+    <string name="search_hint">строка поиска</string>
+
 </resources>
