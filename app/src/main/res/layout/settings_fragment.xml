@@ -133,7 +133,7 @@
             android:layout_marginBottom="20dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/settings_reset_switch"
-            android:text="@string/btn_save_settings_text"
+            android:text="@string/settings_btn_save_text"
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
 

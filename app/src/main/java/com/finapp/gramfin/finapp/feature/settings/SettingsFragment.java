@@ -54,6 +54,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        getActivity().setTitle(R.string.settings_title);
     }
 
     @OnClick(R.id.settings_btn_save)
