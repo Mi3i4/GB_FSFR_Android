@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.model.ModelMainMenuItem;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class MainMenuFragment extends Fragment {
 

@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel;
 import com.finapp.gramfin.finapp.BR;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.settings.model.SettingsModel;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
+import com.finapp.gramfin.finapp.service.FragmentRouter;
 
 public class SettingsViewModel extends ViewModel implements Observable {
     private PropertyChangeRegistry registry = new PropertyChangeRegistry();

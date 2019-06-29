@@ -15,8 +15,10 @@ import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.IQuestionViewpager;
 import com.finapp.gramfin.finapp.feature.question_viewpager.presenter.PresenterQuestionViewpager;
-import com.finapp.gramfin.finapp.feature.training_totals.TrainingTotals;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
+import com.finapp.gramfin.finapp.feature.training_totals.TrainingTotalsFragment;
+import com.finapp.gramfin.finapp.feature.training_totals.TrainingTotalsViewModel;
+import com.finapp.gramfin.finapp.service.DisposableManager;
+import com.finapp.gramfin.finapp.service.FragmentRouter;
 
 import java.util.List;
 
@@ -67,16 +69,16 @@ public class QuestionViewpagerFragment extends Fragment implements IQuestionView
         if (++item < viewPager.getAdapter().getItemCount()) {
             viewPager.setCurrentItem(item, true);
         } else {
-            Single.fromCallable(() -> presenterQuestionViewpager.calcRightAnswersAmount())
+            FragmentRouter.getInstance().placeFragment(TrainingTotalsFragment.class, null);
+
+            DisposableManager.add(Single.fromCallable(() -> presenterQuestionViewpager.calcRightAnswersAmount())
                     .observeOn(Schedulers.io())
                     .subscribeOn(AndroidSchedulers.mainThread())
                     .subscribe(s -> {
                         if (s != null) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString(getContext().getString(R.string.router_tag), s);
-                            FragmentRouter.getInstance().placeFragment(TrainingTotals.class, bundle);
-                        } else { FragmentRouter.getInstance().placeFragment(TrainingTotals.class, null); }
-            });
+                            TrainingTotalsViewModel.getInstance().setTotals(s);
+                        }
+            }));
         }
     }
 }
