@@ -1,17 +1,27 @@
 package com.finapp.gramfin.finapp;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.SearchView;
+
+import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
+import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
+import com.finapp.gramfin.finapp.feature.settings.SettingsFragment;
+import com.finapp.gramfin.finapp.feature.statistics.wrong_answers.WrongAnswersFragment;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
+
+import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,31 +30,33 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        initDrawerMenu(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        FragmentRouter.getInstance().setContext(this, getSupportFragmentManager());
+        FragmentRouter.getInstance().placeFragment(MainMenuFragment.class, null);
+    }
+
+
+    private void initDrawerMenu(Toolbar toolbar) {
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -56,6 +68,24 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem search = menu.findItem(R.id.action_search);
+        SearchView searchText = (SearchView) search.getActionView();
+        searchText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO: Implement the search submit
+                FragmentRouter.getInstance().notImplementedToast();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO: Implement the search query change
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -74,28 +104,39 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Bundle bundle = new Bundle();
+        item.setChecked(true);
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.learning) {
+            bundle.putString(getString(R.string.title_tag),"ИЗУЧЕНИЕ");
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.training) {
+            bundle.putString(getString(R.string.title_tag),"ТРЕНИРОВКА");
+            FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.exam) {
+            FragmentRouter.getInstance().notImplementedToast();
+        } else if (id == R.id.statistics) {
+            FragmentRouter.getInstance().placeFragment(WrongAnswersFragment.class, null);
+        } else if (id == R.id.bookmark) {
+            FragmentRouter.getInstance().placeFragment(FavouritesFragment.class, null);
+        } else if (id == R.id.settings) {
+            FragmentRouter.getInstance().placeFragment(SettingsFragment.class, null);
+        } else if (id == R.id.add_friends) {
+            FragmentRouter.getInstance().notImplementedToast();
+        } else if (id == R.id.write_us) {
+            FragmentRouter.getInstance().notImplementedToast();
+        } else if (id == R.id.exit) {
+            FragmentRouter.getInstance().notImplementedToast();
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

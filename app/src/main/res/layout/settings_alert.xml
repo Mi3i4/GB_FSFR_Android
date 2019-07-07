@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name = "viewModel"
+            type = "com.finapp.gramfin.finapp.feature.settings.SettingsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/settings_alert_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/settings_alert_title"
+            android:textSize="20sp"
+            android:textColor="@color/colorBlackText">
+        </TextView>
+
+        <TextView
+            android:id="@+id/settings_alert_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/settings_alert_text"
+            android:textSize="16sp"
+            android:layout_below="@id/settings_alert_title"
+            android:textColor="@color/colorSettingsCommonText">
+        </TextView>
+
+        <Button
+            android:id="@+id/settings_alert_positive_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"
+            android:layout_below="@id/settings_alert_text"
+            android:layout_toStartOf="@id/settings_alert_negative_answer"
+            android:onClick="@{v -> viewModel.resetStatistics()}"
+            android:text="@string/text_yes"
+            android:textColor="@color/colorSettingsButtonText"
+            android:backgroundTint="@color/colorSettingsButtonFill"/>
+
+        <Button
+            android:id="@+id/settings_alert_negative_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="-12dp"
+            android:layout_below="@id/settings_alert_text"
+            android:layout_alignEnd="@id/settings_alert_text"
+            android:onClick="@{v -> viewModel.cancelResetStatistics()}"
+            android:text="@string/text_no"
+            android:textColor="@color/colorSettingsButtonText"
+            android:backgroundTint="@color/colorSettingsButtonFill"/>
+    </RelativeLayout>
+</layout>

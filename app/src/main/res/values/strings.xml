@@ -3,7 +3,71 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">google@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string name="text_current_question">Финансовый рынок представляет собой</string>
+    <string name="answer_choice_1">Механизм перераспределения капитала между кредиторами и заемщиками при помощи посредников на основании спроса и предложения на капитал</string>
+    <string name="answer_choice_2">Совокупность кредитно-финансовых организаций страны, перераспределяющих потоки денежных средств между субъектами, имеющими временно свободные денежные средства и субъектами, испытывающими недостаток в финансовых ресурсах</string>
+    <string name="answer_choice_3">институт, трансформирующий сбережения в инвестиции</string>
+    <string name="answer_choice_4">Всё перечисленное</string>
+    <string name="findError">нашли ошибку?</string>
+    <string name="comments">коментарии</string>
+    <string name="current_chapter">Глава 1 - Рынок ценных бумаг</string>
+    <string name="current_topic">Тема 1 - Функционирование финансового рынка</string>
+
+    <string name="headline_second_screen">Выберите главу для тренировки:</string>
+    <string name="search">Search</string>
+    <string name="main_menu_title">ФИНУМ</string>
+    <string name="training_title">ТРЕНИРОВКА</string>
+    <string name="favourites_title">ИЗБРАННОЕ</string>
+    <string name="wrong_answers_title">НЕ ЗНАЮ</string>
+
+    <string name="btn_start_learning_text">ИЗУЧЕНИЕ</string>
+    <string name="btn_start_training_text">ТРЕНИРОВКА</string>
+    <string name="btn_start_exam_text">ЭКЗАМЕН</string>
+    <string name="btn_statistic_text">СТАТИСТИКА</string>
+    <string name="btn_favorites_text">ИЗБРАННОЕ</string>
+
+    <string name="home_link_test">На начальный экран</string>
+    <string name="under_construction">Функционал еще не готов…</string>
+    <string name="name_title">Григорий Мельник</string>
+    <string name="learning">Изучение</string>
+    <string name="training">Тренировка</string>
+    <string name="exam">Экзамен</string>
+    <string name="statistics">Статистика</string>
+    <string name="bookmark">Избранное</string>
+    <string name="settings">Настройки</string>
+    <string name="add_friends">Пригласить друзей</string>
+    <string name="write_us">Напишите нам</string>
+    <string name="exit">Выход</string>
+    <string name="button_skip_text">ПРОПУСТИТЬ</string>
+
+    <string name="totals_btn_repeat_text">ПОВТОРИТЬ</string>
+    <string name="totals_btn_home_text">НА ГЛАВНУЮ</string>
+    <string name="totals_text_congratulation">Поздравляем,\nтренировка окончена!</string>
+    <string name="totals_text_result">Ваш результат:</string>
+    <string name="totals_text">9 / 10</string>
+    <string name="router_tag">router_tag</string>
+    <string name="title_tag">title_tag</string>
+
+    <string name="question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
+    <string name="chapter_holder">Рынок ценных бумаг.</string>
+
+    <string name="full_name_holder">Григорий Мельник</string>
+    <string name="email_holder">google@gmail.com</string>
+    <string name="password_holder">************</string>
+    <string name="new_name_holder">Новое имя</string>
+    <string name="new_email_holder">Новый e-mail</string>
+    <string name="new_password_holder">Новый пароль</string>
+
+    <string name="settings_reset_text">Сбросить статистику</string>
+    <string name="settings_btn_save_text">СОХРАНИТЬ</string>
+    <string name="settings_title">НАСТРОЙКИ</string>
+    <string name="settings_alert_title">Сбросить статистику?</string>
+    <string name="settings_alert_text">Данное действие приведет к удалению всех данных статистики.</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+
 </resources>
