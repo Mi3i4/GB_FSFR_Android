@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        EditText searchSrcText = searchView.findViewById(R.id.search_src_text);
+        searchSrcText.setTextColor(getResources().getColor(R.color.colorSearchText, null));
         ImageView searchCloseButton = searchView.findViewById(R.id.search_close_btn);
         searchCloseButton.setImageResource(R.drawable.search_clr);
 
