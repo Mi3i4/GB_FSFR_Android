@@ -2,6 +2,7 @@ package com.finapp.gramfin.finapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 
 import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
@@ -18,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
 
@@ -70,8 +72,8 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
 
         MenuItem search = menu.findItem(R.id.action_search);
-        SearchView searchText = (SearchView) search.getActionView();
-        searchText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        SearchView searchView = (SearchView) search.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // TODO: Implement the search submit
@@ -85,6 +87,9 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         });
+
+        ImageView searchCloseButton = searchView.findViewById(R.id.search_close_btn);
+        searchCloseButton.setImageResource(R.drawable.search_clr);
 
         return true;
     }
@@ -104,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Bundle bundle = new Bundle();
         item.setChecked(true);
