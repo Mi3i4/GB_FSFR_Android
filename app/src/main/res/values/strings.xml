@@ -65,7 +65,8 @@
     <string name="new_password_holder">Новый пароль</string>
 
     <string name="settings_reset_text">Сбросить статистику</string>
-    <string name="btn_save_settings_text">СОХРАНИТЬ</string>
+    <string name="settings_btn_save_text">СОХРАНИТЬ</string>
+    <string name="settings_title">НАСТРОЙКИ</string>
     <string name="settings_alert_title">Сбросить статистику?</string>
     <string name="settings_alert_text">Данное действие приведет к удалению всех данных статистики.</string>
     <string name="text_yes">Да</string>
