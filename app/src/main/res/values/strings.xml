@@ -45,5 +45,24 @@
     <string name="totals_text_result">Ваш результат:</string>
     <string name="totals_text">9 / 10</string>
     <string name="router_tag">RouterTag</string>
+    <string name="registration">Регистрация</string>
+    <string name="authorize">Авторизация</string>
+    <string name="throughSN">Через социальные сети</string>
+    <string name="throughLP">Или по логин/паролю</string>
+    <string name="regform">Регистрационная форма</string>
+    <string name="authviagoogle">Продолжить с Google</string>
+    <string name="authviafacebook">Продолжить с Facebook</string>
+    <string name="facebook_app_id">382472242385220</string>
+    <string name="fb_login_protocol_scheme">fb382472242385220</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="passwordtext">Пароль</string>
+    <string name="passwordtextconfirm">Подтверждение пароля</string>
+    <string name="registerbutton">Зарегистрироваться</string>
+    <string name="forgetpassword">Забыли пароль?</string>
+    <string name="email">Почта</string>
+    <string name="name">Имя</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

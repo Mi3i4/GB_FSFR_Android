@@ -17,5 +17,8 @@
     <color name="colorTextIknow">#6FCF97</color>
     <color name="colorTextIdontKnow">#EB5757</color>
     <color name="colorBlackText">#000000</color>
+    <color name="grey">#B3FFFFFF</color>
+    <color name="fbcolor">#3b5998</color>
+    <color name="googlecolor">#4285F4</color>
 
 </resources>

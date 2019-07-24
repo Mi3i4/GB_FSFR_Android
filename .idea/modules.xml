@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GB_FSFR_Android.iml" filepath="$PROJECT_DIR$/GB_FSFR_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewpager2/viewpager2.iml" filepath="$PROJECT_DIR$/viewpager2/viewpager2.iml" />
     </modules>
   </component>
 </project>
