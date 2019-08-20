@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity
 
         EditText searchSrcText = searchView.findViewById(R.id.search_src_text);
         searchSrcText.setTextColor(getResources().getColor(R.color.colorSearchText, null));
+        searchSrcText.setHintTextColor(getResources().getColor(R.color.colorSearchTintBlack, null));
         ImageView searchCloseButton = searchView.findViewById(R.id.search_close_btn);
         searchCloseButton.setImageResource(R.drawable.search_clr);
 
