@@ -1,6 +1,6 @@
 package com.finapp.gramfin.finapp.feature.training_totals;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -28,7 +28,7 @@ public class TrainingTotalsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.training_totals_fragment, container, false);
 
-        viewModel = ViewModelProviders.of(this).get(TrainingTotalsViewModel.class);
+        viewModel = new ViewModelProvider(this).get(TrainingTotalsViewModel.class);
         TrainingTotalsFragmentBinding.bind(view).setViewModel(viewModel);
 
         return view;

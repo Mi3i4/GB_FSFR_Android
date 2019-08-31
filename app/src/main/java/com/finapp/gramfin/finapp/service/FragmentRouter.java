@@ -44,7 +44,7 @@ public class FragmentRouter {
     }
 
     public void placeFragment(@NonNull Class<?> cls, @Nullable Bundle bundle) {
-        Fragment fragment = Fragment.instantiate(context, cls.getName());
+        Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), cls.getName());
 
         if (bundle != null) fragment.setArguments(bundle);
 
