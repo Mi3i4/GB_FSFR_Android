@@ -27,7 +27,7 @@
     <color name="colorWrongAnswerTintBlack">#8A000000</color>
     <color name="colorWrongAnswerBlack">#DE000000</color>
 
-    <color name="colorSearchText">#61000000</color>
+    <color name="colorSearchText">#000000</color>
     <color name="colorSearchTintBlack">#4A000000</color>
 
     <color name="colorSettingsCommonText">#8A000000</color>
