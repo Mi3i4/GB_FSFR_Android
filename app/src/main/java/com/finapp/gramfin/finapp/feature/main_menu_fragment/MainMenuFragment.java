@@ -65,6 +65,8 @@ public class MainMenuFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             final ModelMainMenuItem mainMenuItem = getItem(position);
 
+            if (mainMenuItem == null) return convertView;
+            
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext())
                         .inflate(R.layout.main_menu_item, null);
@@ -77,7 +79,7 @@ public class MainMenuFragment extends Fragment {
             btnImage.setImageResource(mainMenuItem.getImage());
 
             if (screenSize.y <= LOW_SCREEN_HEIGHT) {
-                btnImage.getLayoutParams().height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
+                btnImage.getLayoutParams().height = 130;
             }
 
             convertView.setOnClickListener(mainMenuItem.getListener());
