@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         initDrawerMenu(toolbar);
 
 
@@ -74,6 +74,16 @@ public class MainActivity extends AppCompatActivity
 
         MenuItem search = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) search.getActionView();
+        searchView.setOnSearchClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        View back_dim_layout = findViewById(R.id.dim_layout);
+                        FragmentRouter.getInstance().curtainOn(back_dim_layout);
+                    }
+                });
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -94,6 +104,16 @@ public class MainActivity extends AppCompatActivity
         searchSrcText.setHintTextColor(getResources().getColor(R.color.colorSearchTintBlack, null));
         ImageView searchCloseButton = searchView.findViewById(R.id.search_close_btn);
         searchCloseButton.setImageResource(R.drawable.search_clr);
+        searchCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View back_dim_layout = findViewById(R.id.dim_layout);
+                FragmentRouter.getInstance().curtainOff(back_dim_layout);
+                searchView.setQuery("", false);
+                searchView.clearFocus();
+                searchView.setIconified(true);
+            }
+        });
 
         return true;
     }
@@ -104,10 +124,6 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -119,11 +135,11 @@ public class MainActivity extends AppCompatActivity
         item.setChecked(true);
 
         if (id == R.id.learning) {
-            bundle.putString(getString(R.string.title_tag),"ИЗУЧЕНИЕ");
+            bundle.putString(getString(R.string.title_tag), "ИЗУЧЕНИЕ");
             FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
 
         } else if (id == R.id.training) {
-            bundle.putString(getString(R.string.title_tag),"ТРЕНИРОВКА");
+            bundle.putString(getString(R.string.title_tag), "ТРЕНИРОВКА");
             FragmentRouter.getInstance().placeFragment(FragmentChapterSeliction.class, bundle);
 
         } else if (id == R.id.exam) {
