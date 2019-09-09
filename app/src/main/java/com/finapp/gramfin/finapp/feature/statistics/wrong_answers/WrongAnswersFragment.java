@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.statistics.wrong_answers.model.WrongAnswersModel;
@@ -37,7 +37,7 @@ public class WrongAnswersFragment extends Fragment {
 
         getActivity().setTitle(R.string.wrong_answers_title);
 
-        viewModel = ViewModelProviders.of(this).get(WrongAnswersViewModel.class);
+        viewModel = new ViewModelProvider(this).get(WrongAnswersViewModel.class);
         viewModel.setupModel();
 
         ListView listView = getView().findViewById(R.id.lvWrongAnswers);

@@ -8,6 +8,7 @@ import com.finapp.gramfin.finapp.feature.favourites.FavouritesFragment;
 import com.finapp.gramfin.finapp.feature.second_screen.view.FragmentChapterSeliction;
 import com.finapp.gramfin.finapp.feature.settings.SettingsFragment;
 import com.finapp.gramfin.finapp.feature.statistics.wrong_answers.WrongAnswersFragment;
+import com.finapp.gramfin.finapp.service.DisposableManager;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
@@ -21,7 +22,7 @@ import android.view.MenuItem;
 
 import com.finapp.gramfin.finapp.feature.main_menu_fragment.MainMenuFragment;
 
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
+import com.finapp.gramfin.finapp.service.FragmentRouter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -139,4 +140,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        DisposableManager.dispose();
+        super.onDestroy();
+    }
 }

@@ -2,7 +2,7 @@ package com.finapp.gramfin.finapp.feature.second_screen.presenter;
 
 import com.finapp.gramfin.finapp.feature.question_viewpager.QuestionViewpagerFragment;
 import com.finapp.gramfin.finapp.feature.second_screen.model.ModelChapter;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
+import com.finapp.gramfin.finapp.service.FragmentRouter;
 
 import java.util.ArrayList;
 import java.util.List;

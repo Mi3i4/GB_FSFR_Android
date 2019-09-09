@@ -1,6 +1,6 @@
 package com.finapp.gramfin.finapp.feature.favourites;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -40,7 +40,7 @@ public class FavouritesFragment extends Fragment {
 
         getActivity().setTitle(R.string.favourites_title);
 
-        viewModel = ViewModelProviders.of(this).get(FavouritesViewModel.class);
+        viewModel = new ViewModelProvider(this).get(FavouritesViewModel.class);
         viewModel.setupModel();
 
         ListView listView = getView().findViewById(R.id.lvFavourites);
