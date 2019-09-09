@@ -30,7 +30,7 @@ public class TrainingTotalsViewModel extends ViewModel implements Observable {
 
     public void setTotals(String totals) {
         this.totals = totals;
-        registry.notifyChange(this, BR.totals);
+        registry.notifyChange(this, BR._all);
     }
 
     public void onClick(View v) {
