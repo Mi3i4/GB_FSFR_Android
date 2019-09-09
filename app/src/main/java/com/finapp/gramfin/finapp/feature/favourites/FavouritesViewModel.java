@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.feature.favourites.model.FavouritesModel;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
+import com.finapp.gramfin.finapp.service.FragmentRouter;
 
 import java.util.ArrayList;
 import java.util.List;

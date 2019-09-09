@@ -1,7 +1,7 @@
 package com.finapp.gramfin.finapp.feature.settings;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -41,7 +41,7 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.settings_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        viewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
+        viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
         if (viewModel.getSettingsModel() == null) {
             viewModel.setupModel(createAlertDialog(container));
         }
