@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.data_reqord.AnswerRecordRestModel;
 import com.finapp.gramfin.finapp.feature.question_viewpager.model.ModelQuestion;
-import com.finapp.gramfin.finapp.frag_router.FragmentRouter;
+import com.finapp.gramfin.finapp.service.FragmentRouter;
 
 import java.util.List;
 
@@ -34,17 +34,17 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.button_skip) public Button buttonSkip;
 
     @BindViews({R.id.card_answer_choice_1, R.id.card_answer_choice_2, R.id.card_answer_choice_3, R.id.card_answer_choice_4})
-    public List<CardView> listChoicesCard;
+    List<CardView> listChoicesCard;
     @BindViews({R.id.answer_choice_1, R.id.answer_choice_2, R.id.answer_choice_3, R.id.answer_choice_4})
-    public List<TextView> listChoices;
+    List<TextView> listChoices;
     @BindViews({R.id.answer_checkbox_1, R.id.answer_checkbox_2, R.id.answer_checkbox_3, R.id.answer_checkbox_4})
-    public List<CheckBox> listChoicesCheckboxes;
+    List<CheckBox> listChoicesCheckboxes;
 
     private ModelQuestion modelQuestion;
     private int id;
     private QuestionViewpagerAdapter.Listener listener;
 
-    public QuestionViewpagerHolder(@NonNull View itemView) {
+    private QuestionViewpagerHolder(@NonNull View itemView) {
         super(itemView);
 
         ButterKnife.bind(this, itemView);
@@ -89,7 +89,7 @@ public class QuestionViewpagerHolder extends RecyclerView.ViewHolder {
         initViews(modelQuestion);
     }
 
-    void initViews(ModelQuestion modelQuestion) {
+    private void initViews(ModelQuestion modelQuestion) {
         textQuestion.setText(modelQuestion.getCaption());
 
         int i = 0;

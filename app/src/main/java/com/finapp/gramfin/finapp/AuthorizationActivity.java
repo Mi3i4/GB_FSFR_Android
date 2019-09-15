@@ -1,7 +1,5 @@
 package com.finapp.gramfin.finapp;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -9,7 +7,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.finapp.gramfin.finapp.feature.authorization_fragment.view.CustomAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -18,6 +15,7 @@ public class AuthorizationActivity extends AppCompatActivity {
     TabLayout tabLayout;
     @BindView(R.id.vp)
     ViewPager2 viewPager2;
+
     TabLayoutMediator tabLayoutMediator;
 
     CustomAdapter adapter;
@@ -28,6 +26,7 @@ public class AuthorizationActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         adapter = new CustomAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager2.setAdapter(adapter);
+
         tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, true, new TabLayoutMediator.OnConfigureTabCallback() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
@@ -36,6 +35,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                     tab.setText("Регистрация");
                 if (position==0)
                     tab.setText("Авторизация");
+
                 adapter.createFragment(position);
             }
 

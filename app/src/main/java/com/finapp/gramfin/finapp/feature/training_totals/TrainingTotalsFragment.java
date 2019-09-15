@@ -1,6 +1,6 @@
 package com.finapp.gramfin.finapp.feature.training_totals;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -11,36 +11,25 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.finapp.gramfin.finapp.R;
+import com.finapp.gramfin.finapp.databinding.TrainingTotalsFragmentBinding;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class TrainingTotals extends Fragment {
-
-    @BindView(R.id.totals_text) TextView textView;
+public class TrainingTotalsFragment extends Fragment {
 
     private TrainingTotalsViewModel viewModel;
 
-    public static TrainingTotals newInstance() {
-        return new TrainingTotals();
+    public static TrainingTotalsFragment newInstance() {
+        return new TrainingTotalsFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.training_totals_fragment, container, false);
-        ButterKnife.bind(this, view);
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            String str = bundle.getString(getContext().getString(R.string.router_tag));
-            if (str != null) {
-                textView.setText(str);
-            }
-        }
+        viewModel = new ViewModelProvider(this).get(TrainingTotalsViewModel.class);
+        TrainingTotalsFragmentBinding.bind(view).setViewModel(viewModel);
 
         return view;
     }
@@ -50,8 +39,5 @@ public class TrainingTotals extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         getActivity().setTitle(R.string.training_title);
-
-        viewModel = ViewModelProviders.of(this).get(TrainingTotalsViewModel.class);
-        ButterKnife.bind(viewModel, getView());
     }
 }
