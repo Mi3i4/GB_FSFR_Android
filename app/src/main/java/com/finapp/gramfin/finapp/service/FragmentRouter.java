@@ -2,6 +2,8 @@ package com.finapp.gramfin.finapp.service;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,7 +44,7 @@ public class FragmentRouter {
     public void notImplementedToast() {
         Toast.makeText(context, context.getString(R.string.under_construction), Toast.LENGTH_SHORT).show();
     }
-
+    
     public void placeFragment(@NonNull Class<?> cls, @Nullable Bundle bundle) {
         Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), cls.getName());
 
@@ -52,5 +54,14 @@ public class FragmentRouter {
                 .replace(R.id.container_fragments, fragment, "fragment")
                 .addToBackStack(null)
                 .commit();
+    }
+
+
+    public void curtainOn(View dim){
+        dim.setVisibility(View.VISIBLE);
+
+    }
+    public void curtainOff(View dim) {
+        dim.setVisibility(View.GONE);
     }
 }

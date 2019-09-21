@@ -55,6 +55,8 @@
     <string name="question_holder">Рынок ценных бумаг как сектор финансового рынка.</string>
     <string name="chapter_holder">Рынок ценных бумаг.</string>
 
+    <string name="search_hint">введите ваш запрос</string>
+
     <string name="full_name_holder">Григорий Мельник</string>
     <string name="email_holder">google@gmail.com</string>
     <string name="password_holder">************</string>
@@ -69,5 +71,6 @@
     <string name="settings_alert_text">Данное действие приведет к удалению всех данных статистики.</string>
     <string name="text_yes">Да</string>
     <string name="text_no">Нет</string>
+
 
 </resources>
