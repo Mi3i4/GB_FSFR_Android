@@ -1,28 +1,31 @@
 package com.finapp.gramfin.finapp.api;
 
 import com.finapp.gramfin.finapp.api.question_model.AuthModel;
-import com.finapp.gramfin.finapp.api.question_model.Authorize;
-import com.finapp.gramfin.finapp.api.question_model.PostModel;
+import com.finapp.gramfin.finapp.api.question_model.RegModel;
+import com.finapp.gramfin.finapp.api.question_model.User;
+import com.finapp.gramfin.finapp.api.question_model.UserToSend;
 import com.finapp.gramfin.finapp.api.question_model.googleModel;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RegistrationAPI {
-    @POST("/api/register")
-    Call<PostModel> regme(@Query("name") String userName, @Query("email") String email, @Query("password") String password);
+    @POST("/users")
+    @Headers("X-Requested-With:XMLHttpRequest")
+    Call<RegModel> regme(@Body UserToSend user);
 
-
-    @POST("/api/login")
-    Call<AuthModel> authme(@Query("email") String email, @Query("password") String password);
+    @POST("/users/login")
+    @Headers("X-Requested-With: XMLHttpRequest")
+    Call<AuthModel> authme(@Body UserToSend user);
 
 
     @GET("/api/google")
+    @FormUrlEncoded
     Call<googleModel> loginViaGoogle();
 
-
-    @GET("/api/auth")
-    Call<Authorize> auths(@Query("authorization") String Bearer);
 }

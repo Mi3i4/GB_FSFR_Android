@@ -1,6 +1,7 @@
 package com.finapp.gramfin.finapp.feature.authorization_fragment.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,8 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.finapp.gramfin.finapp.MainActivity;
 import com.finapp.gramfin.finapp.R;
-import com.finapp.gramfin.finapp.api.question_model.PostModel;
+import com.finapp.gramfin.finapp.api.question_model.RegModel;
+import com.finapp.gramfin.finapp.api.question_model.User;
+import com.finapp.gramfin.finapp.api.question_model.UserToSend;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,15 +26,13 @@ import retrofit2.Response;
 
 public class RegFragment extends Fragment {
 
-    Button regBut;
-    RegPresenter regPresenter;
-    EditText name;
-    EditText email;
-    EditText password;
-    private OnFragmentInteractionListener mListener;
+    private Button regBut;
+    private  RegPresenter regPresenter;
+    private EditText name;
+    private EditText email;
+    private  EditText password;
 
     public RegFragment() {
-        // Required empty public constructor
     }
 
 
@@ -44,7 +46,7 @@ public class RegFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        regPresenter = new RegPresenter();
+        regPresenter = new RegPresenter(getContext());
         View root = inflater.inflate(R.layout.fragment_reg, container, false);
         name = root.findViewById(R.id.yournameet);
         email=root.findViewById(R.id.emailet);
@@ -53,15 +55,18 @@ public class RegFragment extends Fragment {
         regBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                regPresenter.regme().regme(name.getText().toString(),email.getText().toString(), password.getText().toString()).enqueue(new Callback<PostModel>() {
+                regPresenter.apiservice().regme(regPresenter.getUser(email.getText().toString(), password.getText().toString())).enqueue(new Callback<RegModel>() {
                     @Override
-                    public void onResponse(Call<PostModel> call, Response<PostModel> response) {
-                        Log.d("a","b");
+                    public void onResponse(Call<RegModel> call, Response<RegModel> response) {
+                        RegModel regModel = response.body();
+                        regPresenter.saveData(regModel.user.email, password.getText().toString(), regModel.user.id, regModel.user.token);
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
-                    public void onFailure(Call<PostModel> call, Throwable t) {
-                        Log.d("a","b");
+                    public void onFailure(Call<RegModel> call, Throwable t) {
+
                     }
                 });
             }
@@ -71,32 +76,6 @@ public class RegFragment extends Fragment {
 
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

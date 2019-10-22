@@ -9,8 +9,6 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
-        //FacebookSdk.sdkInitialize(getApplicationContext());
-        //AppEventsLogger.activateApp(this);
         super.onCreate();
     }
 }

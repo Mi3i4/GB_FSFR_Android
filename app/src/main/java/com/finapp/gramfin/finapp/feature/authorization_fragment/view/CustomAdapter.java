@@ -25,9 +25,9 @@ public class CustomAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-            case 0:
-                return new AuthFragment();
             case 1:
+                return new AuthFragment();
+            case 0:
                 return new RegFragment();
             default:
                 return null;

@@ -1,15 +1,33 @@
 package com.finapp.gramfin.finapp.feature.authorization_fragment.view;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.widget.Toast;
+
+import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.RegistrationAPI;
+import com.finapp.gramfin.finapp.api.question_model.User;
+import com.finapp.gramfin.finapp.api.question_model.UserToSend;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AuthPresenter {
 
-    public RegistrationAPI authme() {
+    private Context context;
+    private SharedPreferences sharedPreferences;
+
+    public AuthPresenter(Context context)
+    {
+        this.context = context;
+        sharedPreferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+
+    }
+
+
+    public RegistrationAPI apiService() {
         Retrofit retrofit1 = new Retrofit.Builder()
-                .baseUrl("http://185.178.46.111/")
+                .baseUrl("http://167.71.64.44/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit1.create(RegistrationAPI.class);
@@ -17,26 +35,31 @@ public class AuthPresenter {
 
     }
 
+    public UserToSend getUser(String email, String password)
+    {
+        return new UserToSend(new User(email, password));
 
-    public RegistrationAPI loginViaGoogle() {
-        Retrofit retrofit1 = new Retrofit.Builder()
-                .baseUrl("http://185.178.46.111/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        return retrofit1.create(RegistrationAPI.class);
+    }
+
+
+    public void notImplemented()
+    {
+        Toast.makeText(context, context.getString(R.string.under_construction), Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void saveData(String email, String password, int id, String token)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.putString("token", token);
+        editor.putInt("id", id);
+        editor.apply();
+
+    }
 
 
     }
 
 
-    public RegistrationAPI auths(){
-        Retrofit retrofit2 = new Retrofit.Builder()
-                .baseUrl("http://185.178.46.111/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        return retrofit2.create(RegistrationAPI.class);
-
-
-    }
-
-}

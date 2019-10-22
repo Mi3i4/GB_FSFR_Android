@@ -4,24 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.finapp.gramfin.finapp.MainActivity;
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.question_model.AuthModel;
-import com.finapp.gramfin.finapp.api.question_model.Authorize;
+import com.finapp.gramfin.finapp.api.question_model.RegModel;
+import com.finapp.gramfin.finapp.api.question_model.User;
+import com.finapp.gramfin.finapp.api.question_model.UserToSend;
 import com.finapp.gramfin.finapp.api.question_model.googleModel;
-
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,8 +32,9 @@ import retrofit2.Response;
 public class AuthFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    Button Fblogin;
-    AuthPresenter authPresenter;
+
+
+    private AuthPresenter authPresenter;
     @BindView(R.id.emailtv)
     TextView email;
 
@@ -48,61 +47,55 @@ public class AuthFragment extends Fragment {
     @BindView(R.id.password)
     EditText passwordet;
 
-     @OnClick(R.id.loginViaGoogle)
-     public void loginGoogle()
-     {
-        authPresenter.loginViaGoogle().loginViaGoogle().enqueue(new Callback<googleModel>() {
-            @Override
-            public void onResponse(Call<googleModel> call, Response<googleModel> response) {
-                Log.d("a", "b");
-            }
 
-            @Override
-            public void onFailure(Call<googleModel> call, Throwable t) {
-                Log.d("a", "b");
-            }
-        });
+    @OnClick(R.id.forgetPasswordtv)
+    public void forgetPassword()
+    {
+        authPresenter.notImplemented();
 
     }
 
-    @OnClick(R.id.authorizebutton)
-            public void authorize()
+
+    @OnClick(R.id.guestAccess)
+    public void guestClick()
     {
-        Log.d("a","b");
-        authPresenter.authme().authme(emailet.getText().toString(), passwordet.getText().toString()).enqueue(new Callback<AuthModel>() {
+        authPresenter.notImplemented();
+
+    }
+
+    @OnClick(R.id.loginViaGoogle)
+    public void loginGoogle() {
+        authPresenter.notImplemented();
+    }
+
+    @OnClick(R.id.authorizebutton)
+    public void authorize() {
+        String email = emailet.getText().toString();
+        String password = passwordet.getText().toString();
+        authPresenter.apiService().authme(authPresenter.getUser(email, password)).enqueue(new Callback<AuthModel>() {
             @Override
             public void onResponse(Call<AuthModel> call, Response<AuthModel> response) {
-                Log.d("a", "b");
+                AuthModel authModel = response.body();
+                authPresenter.saveData(email, password, authModel.user.id, authModel.user.token);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onFailure(Call<AuthModel> call, Throwable t) {
-                Log.d("a", "b");
+
             }
         });
 
     }
 
     @OnClick(R.id.loginViaFB)
-            public void loginFB()
-    {
-        //Intent intent = new Intent(getActivity(), MainActivity.class);
-       // startActivity(intent);
-            authPresenter.auths().auths("as").enqueue(new Callback<Authorize>() {
-                @Override
-                public void onResponse(Call<Authorize> call, Response<Authorize> response) {
-                    Log.d("a"," b");
-                }
+    public void loginFB() {
 
-                @Override
-                public void onFailure(Call<Authorize> call, Throwable t) {
-                    Log.d("a","b");
-                }
-            });
+      authPresenter.notImplemented();
 
 
     }
-
 
 
     public AuthFragment() {
@@ -127,8 +120,8 @@ public class AuthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_auth, container, false);
-        authPresenter = new AuthPresenter();
-        ButterKnife.bind(this,root);
+        authPresenter = new AuthPresenter(getContext());
+        ButterKnife.bind(this, root);
 
 
         return root;

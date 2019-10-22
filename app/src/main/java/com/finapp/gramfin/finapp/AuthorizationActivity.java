@@ -15,9 +15,7 @@ public class AuthorizationActivity extends AppCompatActivity {
     TabLayout tabLayout;
     @BindView(R.id.vp)
     ViewPager2 viewPager2;
-
     TabLayoutMediator tabLayoutMediator;
-
     CustomAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +25,16 @@ public class AuthorizationActivity extends AppCompatActivity {
         adapter = new CustomAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager2.setAdapter(adapter);
 
-        tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, true, new TabLayoutMediator.OnConfigureTabCallback() {
+        tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, true, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 viewPager2.setCurrentItem(position);
-                if (position==1)
-                    tab.setText("Регистрация");
                 if (position==0)
+                    tab.setText("Регистрация");
+                if (position==1)
                     tab.setText("Авторизация");
-
                 adapter.createFragment(position);
             }
-
         });
         tabLayoutMediator.attach();
 

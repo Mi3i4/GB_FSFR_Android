@@ -74,7 +74,7 @@
     <string name="passwordtextconfirm">Подтверждение пароля</string>
     <string name="registerbutton">Зарегистрироваться</string>
     <string name="forgetpassword">Забыли пароль?</string>
-    <string name="email">Почта</string>
+    <string name="email">E-mail</string>
     <string name="name">Имя</string>
     <string name="registration">Регистрация</string>
     <string name="authorize">Авторизация</string>
@@ -84,6 +84,7 @@
     <string name="authviagoogle">Продолжить с Google</string>
     <string name="authviafacebook">Продолжить с Facebook</string>
     <string name="guestAccess">Гостевой доступ</string>
+
 
 
 </resources>
