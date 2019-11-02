@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import com.finapp.gramfin.finapp.R;
 import com.finapp.gramfin.finapp.api.RegistrationAPI;
-import com.finapp.gramfin.finapp.api.question_model.User;
-import com.finapp.gramfin.finapp.api.question_model.UserToSend;
+import com.finapp.gramfin.finapp.api.auth_model.User;
+import com.finapp.gramfin.finapp.api.auth_model.UserToSend;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -52,7 +52,11 @@ public class RegPresenter {
         editor.apply();
 
     }
+    public void wrongData()
+    {
+        Toast.makeText(context, context.getString(R.string.notnewdata), Toast.LENGTH_LONG).show();
 
+    }
 }
 
 

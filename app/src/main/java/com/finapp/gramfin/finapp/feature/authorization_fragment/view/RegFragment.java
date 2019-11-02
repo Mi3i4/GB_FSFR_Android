@@ -1,13 +1,10 @@
 package com.finapp.gramfin.finapp.feature.authorization_fragment.view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +13,7 @@ import android.widget.EditText;
 
 import com.finapp.gramfin.finapp.MainActivity;
 import com.finapp.gramfin.finapp.R;
-import com.finapp.gramfin.finapp.api.question_model.RegModel;
-import com.finapp.gramfin.finapp.api.question_model.User;
-import com.finapp.gramfin.finapp.api.question_model.UserToSend;
+import com.finapp.gramfin.finapp.api.auth_model.RegModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,10 +53,17 @@ public class RegFragment extends Fragment {
                 regPresenter.apiservice().regme(regPresenter.getUser(email.getText().toString(), password.getText().toString())).enqueue(new Callback<RegModel>() {
                     @Override
                     public void onResponse(Call<RegModel> call, Response<RegModel> response) {
-                        RegModel regModel = response.body();
-                        regPresenter.saveData(regModel.user.email, password.getText().toString(), regModel.user.id, regModel.user.token);
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
+                        if (response.code() == 200) {
+                            RegModel regModel = response.body();
+                            regPresenter.saveData(regModel.user.email, password.getText().toString(), regModel.user.id, regModel.user.token);
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            regPresenter.wrongData();
+
+                        }
                     }
 
                     @Override

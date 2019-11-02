@@ -84,6 +84,8 @@
     <string name="authviagoogle">Продолжить с Google</string>
     <string name="authviafacebook">Продолжить с Facebook</string>
     <string name="guestAccess">Гостевой доступ</string>
+    <string name="wrongData">Неверный логин или пароль</string>
+    <string name="notnewdata">Такой e-mail уже существует</string>
 
 
 

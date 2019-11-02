@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.finapp.gramfin.finapp.MainActivity;
 import com.finapp.gramfin.finapp.R;
-import com.finapp.gramfin.finapp.api.question_model.AuthModel;
-import com.finapp.gramfin.finapp.api.question_model.RegModel;
-import com.finapp.gramfin.finapp.api.question_model.User;
-import com.finapp.gramfin.finapp.api.question_model.UserToSend;
-import com.finapp.gramfin.finapp.api.question_model.googleModel;
+import com.finapp.gramfin.finapp.api.auth_model.AuthModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,10 +70,17 @@ public class AuthFragment extends Fragment {
         authPresenter.apiService().authme(authPresenter.getUser(email, password)).enqueue(new Callback<AuthModel>() {
             @Override
             public void onResponse(Call<AuthModel> call, Response<AuthModel> response) {
-                AuthModel authModel = response.body();
-                authPresenter.saveData(email, password, authModel.user.id, authModel.user.token);
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                if (response.code() == 200) {
+                    AuthModel authModel = response.body();
+                    authPresenter.saveData(email, password, authModel.user.id, authModel.user.token);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    authPresenter.wrongData();
+
+                }
             }
 
             @Override

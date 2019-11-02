@@ -1,4 +1,4 @@
-package com.finapp.gramfin.finapp.api.question_model;
+package com.finapp.gramfin.finapp.api.auth_model;
 
 public class AuthModel {
 
