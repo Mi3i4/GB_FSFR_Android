@@ -71,6 +71,25 @@
     <string name="settings_alert_text">Данное действие приведет к удалению всех данных статистики.</string>
     <string name="text_yes">Да</string>
     <string name="text_no">Нет</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="passwordtext">Пароль</string>
+    <string name="passwordtextconfirm">Подтверждение пароля</string>
+    <string name="registerbutton">Зарегистрироваться</string>
+    <string name="forgetpassword">Забыли пароль?</string>
+    <string name="email">E-mail</string>
+    <string name="name">Имя</string>
+    <string name="registration">Регистрация</string>
+    <string name="authorize">Авторизация</string>
+    <string name="throughSN">Через социальные сети</string>
+    <string name="throughLP">Или по логин/паролю</string>
+    <string name="regform">Регистрационная форма</string>
+    <string name="authviagoogle">Продолжить с Google</string>
+    <string name="authviafacebook">Продолжить с Facebook</string>
+    <string name="guestAccess">Гостевой доступ</string>
+    <string name="wrongData">Неверный логин или пароль</string>
+    <string name="notnewdata">Такой e-mail уже существует</string>
+
+
 
 
 </resources>
